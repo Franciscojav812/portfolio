@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Francisco Javier Alcaraz</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Francisco Javier Alcaraz Bolívar. Desarrollador full stack y de datos, bilingüe español–japonés.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: "panel de análisis" — rejilla asimétrica oscura, lecturas en monoespaciada, un mapa de calor vivo como momento principal. Índigo (藍) + bermellón (朱). Diseño solo oscuro, a propósito. */
+:root{
+  --paper:#0B1019; --surface:#111927; --raised:#162033; --ink:#E2E7EF; --muted:#8D98AB; --line:#222D40;
+  --ai:#7C9BDA; --shu:#FF6A48; --shu-text:#FF8668; --ok:#4CC38A;
+  --f-display:"Archivo","IBM Plex Sans JP","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans","IBM Plex Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --maxw:1180px;
+  --s-1:.8125rem; --s0:1rem; --s1:1.1875rem; --s2:1.5rem; --s3:2.25rem; --s4:3.25rem;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--s0);line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit}
+::selection{background:var(--shu);color:var(--paper)}
+:focus-visible{outline:2px solid var(--shu);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-size:var(--s-1);letter-spacing:.02em}
+.label{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+code{font-family:var(--f-mono);font-size:.88em;color:var(--ink)}
+
+/* Header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;padding-block:12px;flex-wrap:wrap}
+.brand{font-family:var(--f-mono);font-weight:500;font-size:.85rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--shu)}
+nav.links{display:flex;gap:18px;margin-left:auto;flex-wrap:wrap}
+nav.links a{text-decoration:none;font-size:.9rem;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+.seg{display:flex;border:1px solid var(--line);border-radius:999px;padding:2px}
+.seg button{font:500 .75rem var(--f-mono);background:none;border:0;color:var(--muted);padding:5px 10px;border-radius:999px;cursor:pointer}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+@media (max-width:760px){nav.links{display:none}.seg{margin-left:auto}}
+
+/* Hero */
+.hero{padding-block:clamp(36px,6vw,80px) 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.live{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 60%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.name{font-size:clamp(2.1rem,6.4vw,5.8rem);line-height:.9;font-weight:800;font-variation-settings:"wdth" 116;letter-spacing:-.01em;text-transform:uppercase;overflow-wrap:anywhere}
+.name .second{display:block;color:var(--ai)}
+.name .kana{display:block;font-family:var(--f-body);font-size:var(--s0);font-weight:500;text-transform:none;letter-spacing:.3em;color:var(--muted);margin-top:18px;font-variation-settings:normal}
+@media (max-width:600px){.name{font-variation-settings:"wdth" 88}}
+.lede{font-size:var(--s1);max-width:58ch;margin:24px 0 0}
+.lede b{font-weight:600;color:var(--shu-text)}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 .92rem var(--f-body);padding:11px 18px;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);transition:transform .15s,background .15s,border-color .15s}
+.btn:hover{transform:translateY(-1px);border-color:var(--muted)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.primary:hover{background:var(--shu);border-color:var(--shu)}
+.btn svg{width:16px;height:16px}
+
+/* Heatmap */
+.heat{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;gap:12px;min-width:0}
+.heat-head{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline}
+.heat-head h2{font-family:var(--f-body);font-size:.95rem;font-weight:600}
+.heat canvas{display:block;width:100%;max-width:100%;aspect-ratio:3/2;border-radius:3px;cursor:crosshair;touch-action:pan-y}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.stats div{display:grid;gap:2px}
+.stats b{font:500 1.05rem var(--f-mono);font-variant-numeric:tabular-nums}
+.stats .label{font-size:.64rem}
+.heat .cap{margin:0;color:var(--muted);font-size:.78rem;line-height:1.5}
+
+/* Readout strip */
+.readout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink);margin:clamp(40px,6vw,64px) 0 0;padding:0}
+.readout div{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);display:grid;gap:4px;min-width:0}
+.readout dt{margin:0}.readout dd{margin:0;font-size:.92rem}
+.readout .accent{color:var(--ok)}
+@media (max-width:860px){.readout{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.readout{grid-template-columns:1fr}}
+
+/* Sections */
+section.block{padding-block:clamp(64px,9vw,120px) 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:24px;align-items:end;margin-bottom:clamp(28px,4vw,48px);border-bottom:1px solid var(--line);padding-bottom:20px}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+.sec-head h2{font-size:var(--s4);font-weight:800;font-variation-settings:"wdth" 112;line-height:1;text-transform:uppercase;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.sec-head h2 .jp{align-self:flex-end;font-family:var(--f-body);font-size:var(--s1);font-weight:500;color:var(--shu-text);letter-spacing:.2em}
+.sec-head p{margin:0;color:var(--muted);max-width:56ch}
+
+.slab{display:inline-block;background:var(--shu);padding:.08em .14em .02em;line-height:.95;box-shadow:0 18px 40px -18px color-mix(in srgb,var(--shu) 70%,transparent)}
+.metal{background:linear-gradient(180deg,#3B4252 0%,#5E6676 22%,#262C38 48%,#0D1119 52%,#1C222E 78%,#343B49 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 0 rgba(255,255,255,.28)) drop-shadow(0 -1px 0 rgba(0,0,0,.35))}
+.name .first{background:linear-gradient(180deg,#FFFFFF 0%,#C9D0DC 46%,#8E98AA 54%,#E6EAF1 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.name .second{background:linear-gradient(180deg,#B9CCF2 0%,#7C9BDA 46%,#4E6DAE 54%,#9DB5E6 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.slab .metal::selection,.name span::selection{-webkit-text-fill-color:var(--paper)}
+
+/* Cards (shared by experience and projects) */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,2.8vw,32px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);min-width:0;transition:border-color .2s}
+.card:hover{border-color:color-mix(in srgb,var(--ink) 30%,var(--line))}
+.card .body{display:flex;flex-direction:column;gap:16px;min-width:0}
+@media (max-width:820px){.card{grid-template-columns:1fr}}
+.stack-cards{display:grid;gap:20px}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.status{display:inline-flex;align-items:center;gap:7px;font:500 .72rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid var(--line)}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.tag{font:500 .72rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--paper);background:var(--shu);padding:4px 9px;border-radius:3px}
+.card h3{font-size:var(--s3);font-weight:700;font-variation-settings:"wdth" 104;line-height:1.1}
+.card .sub{display:grid;gap:2px;margin-top:-6px}
+.card .sub strong{font-weight:600;color:var(--ai)}
+.card p{margin:0;color:var(--muted)}
+.card ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.card li{padding-left:18px;position:relative;font-size:.95rem}
+.card li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1px;background:var(--shu)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.chip{font:400 .74rem var(--f-mono);padding:3px 8px;border-radius:3px;background:color-mix(in srgb,var(--ai) 14%,transparent);color:var(--ai)}
+.plinks{display:flex;gap:16px;flex-wrap:wrap}
+.plinks a{font:500 .85rem var(--f-mono);text-decoration:none;border-bottom:1px solid var(--shu);padding-bottom:1px}
+.plinks a:hover{color:var(--shu-text)}
+.plinks a::after{content:" ↗"}
+.viz{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:16px;min-width:0;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.viz .label{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.viz .note{margin:0;font:400 .74rem/1.5 var(--f-mono);color:var(--muted)}
+pre.code{margin:0;overflow-x:auto;font:400 .8rem/1.75 var(--f-mono);color:var(--ink);white-space:pre}
+pre.code .k{color:var(--ai)} pre.code .f{color:var(--shu-text)} pre.code .c{color:var(--muted)}
+#seismo{width:100%;height:150px;display:block}
+.shindo{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:2px}
+.shindo span{font:500 .68rem var(--f-mono);text-align:center;padding:6px 0;border-radius:2px;color:#0E1626}
+.hex{margin:0;overflow-x:auto;font:400 .78rem/1.75 var(--f-mono);color:var(--muted);white-space:pre}
+.hex .o{color:var(--ai)} .hex .m{color:var(--shu-text);font-weight:500} .hex .a{color:var(--ink)}
+
+/* Formation */
+.formation svg{width:100%;height:auto;display:block}
+.formation .pl{fill:var(--ai);stroke:var(--paper);stroke-width:.8;transition:cx .45s cubic-bezier(.3,.7,.2,1),cy .45s cubic-bezier(.3,.7,.2,1)}
+.formation .gk{fill:var(--shu)}
+.fbtns{display:flex;gap:4px;flex-wrap:wrap}
+.fbtns button{font:500 .72rem var(--f-mono);background:none;border:1px solid var(--line);color:var(--muted);padding:4px 9px;border-radius:3px;cursor:pointer}
+.fbtns button[aria-pressed="true"]{border-color:var(--ai);color:var(--ink);background:color-mix(in srgb,var(--ai) 16%,transparent)}
+.bars{display:grid;gap:7px}
+.bar{display:grid;grid-template-columns:28px minmax(0,1fr) 34px;gap:8px;align-items:center;font:400 .72rem var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.bar .track{height:8px;background:color-mix(in srgb,var(--ink) 9%,transparent);border-radius:2px;overflow:hidden}
+.bar .fill{display:block;height:100%;background:var(--ai);border-radius:2px}
+.bar .fill.full{background:var(--shu)}
+.card.feature .full{grid-column:1/-1}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line);margin-top:4px}
+.kpis div{display:grid;gap:2px;padding:12px 10px 0 0}
+.kpis b{font:600 1.5rem var(--f-display);font-variation-settings:"wdth" 108;color:var(--ink)}
+.kpis .label{font-size:.64rem}
+@media (max-width:520px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.mods div{padding:18px 20px 0 0;display:grid;gap:8px;align-content:start}
+.mods div + div{padding-left:20px;border-left:1px solid var(--line)}
+.mods p{font-size:.93rem}
+@media (max-width:820px){.mods{grid-template-columns:1fr}.mods div + div{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:16px}}
+.eng{display:grid;gap:14px;border-top:1px solid var(--line);padding-top:18px}
+.eng ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px}
+@media (max-width:820px){.eng ul{grid-template-columns:1fr}}
+.bar .fill.low{background:var(--shu)} .bar .fill.mid{background:var(--ok)} .bar .fill.high{background:#E9B44C}
+.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.7rem}
+.legend > span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.legend i.low{background:var(--shu)} .legend i.mid{background:var(--ok)} .legend i.high{background:#E9B44C}
+
+/* Profile */
+.profile{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(28px,6vw,80px)}
+@media (max-width:860px){.profile{grid-template-columns:1fr}}
+.prose{display:grid;gap:18px;font-size:var(--s1);max-width:60ch}
+.prose p{margin:0}
+.prose .big{font-family:var(--f-display);font-size:var(--s2);font-weight:600;line-height:1.3;font-variation-settings:"wdth" 100}
+.side{display:grid;gap:36px;align-content:start}
+.timeline{display:grid;border-left:1px solid var(--line);margin:0;padding:0;list-style:none}
+.timeline li{position:relative;padding:0 0 26px 24px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid var(--ai)}
+.timeline li.now::before{background:var(--shu);border-color:var(--shu)}
+.timeline h3{font-size:var(--s1);font-weight:700;font-variation-settings:"wdth" 100;margin:4px 0 2px}
+.timeline p{margin:0;color:var(--muted);font-size:.93rem}
+.langs{display:grid;gap:12px;margin-top:10px}
+.lang{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center}
+.lang .meter{grid-column:1/-1;display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.lang .meter i{height:5px;border-radius:1px;background:color-mix(in srgb,var(--ink) 10%,transparent)}
+.lang .meter i.on{background:var(--ai)}
+.lang .meter i.goal{background:repeating-linear-gradient(90deg,var(--ai) 0 2px,transparent 2px 4px)}
+
+/* Stack */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));border-top:1px solid var(--line)}
+.stack div{padding:20px 20px 22px 0;border-bottom:1px solid var(--line)}
+.stack h3{font-family:var(--f-mono);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.stack ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+
+/* Contact */
+.contact{padding-block:clamp(72px,10vw,140px) clamp(48px,7vw,80px)}
+.contact h2{font-size:clamp(2.6rem,9vw,7rem);line-height:.9;font-weight:800;font-variation-settings:"wdth" 122;text-transform:uppercase}
+.contact h2 .jp{display:block;font-family:var(--f-body);font-size:var(--s1);font-weight:500;color:var(--shu-text);letter-spacing:.3em;margin-top:14px;text-transform:none;font-variation-settings:normal}
+.contact p{max-width:54ch;color:var(--muted);font-size:var(--s1);margin:24px 0 0}
+.contact .move{display:flex;align-items:center;gap:10px;margin-top:14px;color:var(--ink);font-size:var(--s0)}
+.contact .move svg{width:18px;height:18px;color:var(--ok);flex:none}
+.contact .ctas{margin-top:30px}
+.mailbox{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.mail{font:500 clamp(1rem,2.4vw,1.35rem) var(--f-mono);user-select:all;overflow-wrap:anywhere;padding:8px 0;border-bottom:2px solid var(--shu)}
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:22px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:6px;font:500 .85rem var(--f-mono);transition:.25s;pointer-events:none;z-index:20}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion: reduce){.live{animation:none}.btn,.card,.toast,.formation .pl{transition:none}}
+</style>
+</head>
+<body>
+
+
+<div id="app" data-lang="es">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><span class="dot"></span>fja.dev</a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#experiencia" data-i18n="nav.exp">Experiencia</a>
+      <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+      <a href="#perfil" data-i18n="nav.profile">Perfil</a>
+      <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+    </nav>
+    <div class="seg" role="group" aria-label="Idioma">
+      <button type="button" id="l-es" data-l="es" aria-pressed="true">ES</button>
+      <button type="button" id="l-en" data-l="en" aria-pressed="false">EN</button>
+      <button type="button" id="l-ja" data-l="ja" aria-pressed="false">日本語</button>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="live" aria-hidden="true"></span><span class="label" data-i18n="hero.eyebrow">Desarrollador full stack y de datos · Madrid</span></div>
+        <h1 class="name" id="name"><span class="first">Francisco Javier</span><span class="second">Alcaraz Bolívar</span><span class="kana" lang="ja">アルカラス・フランシスコ・ハビエル</span></h1>
+        <p class="lede" data-i18n="hero.lede">Hago software que trabaja con datos: incidencias en una base de datos de producción, terremotos en tiempo real, partidos de fútbol minuto a minuto. Técnico Superior en DAM, estudiante de Ingeniería Informática y <b>bilingüe nativo español–japonés</b>. Me centro en <b>ciencia de datos aplicada al fútbol, cloud y desarrollo full stack</b>.</p>
+        <div class="ctas">
+          <a class="btn primary" href="#proyectos"><span data-i18n="hero.cta1">Ver proyectos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+          <a class="btn" href="https://portfoli-dev-franciscoalcaraz.vercel.app/CV_DAM_Francisco_Javier_Alcaraz_Bolivar.pdf" target="_blank" rel="noopener"><span data-i18n="hero.cta2">Descargar CV</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg></a>
+          <a class="btn" href="#contacto"><span data-i18n="hero.cta3">Contactar</span></a>
+        </div>
+      </div>
+
+      <figure class="heat" style="margin:0">
+        <div class="heat-head"><h2 data-i18n="heat.title">Mapa de calor de un jugador</h2><span class="label" data-i18n="heat.sim">Datos simulados</span></div>
+        <canvas id="pitch" aria-label="Mapa de calor simulado sobre un campo de fútbol 7"></canvas>
+        <div class="stats">
+          <div><span class="label" data-i18n="heat.min">Minuto</span><b id="s-min">0'</b></div>
+          <div><span class="label" data-i18n="heat.dist">Distancia</span><b id="s-dist">0.00 km</b></div>
+          <div><span class="label" data-i18n="heat.vmax">Vel. máx.</span><b id="s-vmax">0.0 km/h</b></div>
+          <div><span class="label" data-i18n="heat.spr">Sprints</span><b id="s-spr">0</b></div>
+        </div>
+        <figcaption class="cap" data-i18n="heat.cap">Simulación de tracking en un campo de fútbol 7 (60 × 40 m). Mueve el cursor o toca el campo para dirigir al jugador.</figcaption>
+      </figure>
+    </div>
+
+    <dl class="readout mono" aria-label="Resumen">
+      <div><dt class="label" data-i18n="r.focus">Foco</dt><dd data-i18n="r.focusv">Ciencia de datos (fútbol) · Cloud · Full stack</dd></div>
+      <div><dt class="label" data-i18n="r.study">Formación</dt><dd data-i18n="r.studyv">Ing. Informática (en curso) · Técnico Superior DAM</dd></div>
+      <div><dt class="label" data-i18n="r.lang">Idiomas</dt><dd data-i18n="r.langv">Español y japonés nativos · Inglés (B2 en curso)</dd></div>
+      <div><dt class="label" data-i18n="r.move">Disponibilidad</dt><dd class="accent" data-i18n="r.movev">Reubicación en España y en el extranjero</dd></div>
+    </dl>
+  </section>
+
+  <!-- Experiencia -->
+  <section class="block wrap" id="experiencia">
+    <div class="sec-head">
+      <h2><span class="slab"><span class="metal" data-i18n="exp.title">Experiencia</span></span><span class="jp" lang="ja">職歴</span></h2>
+      <p data-i18n="exp.intro">Trabajo real con datos de producción, en una empresa del sector farmacéutico.</p>
+    </div>
+    <article class="card">
+      <div class="body">
+        <div class="meta"><span class="status"><i></i><span data-i18n="exp.dates">Feb 2026 – jun 2026 · 5 meses</span></span><span class="label" data-i18n="exp.place">Madrid · Presencial</span></div>
+        <h3 data-i18n="exp.role">Desarrollo de Soporte Backend y Análisis SQL</h3>
+        <div class="sub"><strong data-i18n="exp.company">COFARES · Contrato de prácticas</strong></div>
+        <p data-i18n="exp.desc">Soporte funcional y técnico de Farmanager, el software de gestión farmacéutica desarrollado internamente, analizando el comportamiento del sistema a nivel de datos.</p>
+        <ul>
+          <li data-i18n="exp.b1">Diagnóstico y resolución de incidencias con MySQL: diseño y ejecución de consultas y scripts para depurar errores, validar información y detectar inconsistencias.</li>
+          <li data-i18n="exp.b2">Migraciones de datos desde aplicaciones de terceros al sistema interno, garantizando la integridad y la adaptación al modelo relacional.</li>
+          <li data-i18n="exp.b3">Apoyo al mantenimiento correctivo y preventivo mediante SQL.</li>
+          <li data-i18n="exp.b4">Documentación técnica de incidencias, soluciones y procedimientos, para dar trazabilidad y comunicarse con soporte de nivel superior y desarrollo.</li>
+          <li data-i18n="exp.b5">Análisis de patrones de error recurrentes y propuestas de optimización de datos y procesos.</li>
+        </ul>
+        <div class="chips"><span class="chip">MySQL</span><span class="chip">SQL</span><span class="chip" data-i18n="exp.c1">Modelo relacional</span><span class="chip" data-i18n="exp.c2">Migración de datos</span><span class="chip" data-i18n="exp.c3">Documentación técnica</span></div>
+      </div>
+      <div class="viz">
+        <div class="label"><span data-i18n="exp.viz">Ejemplo ilustrativo</span><span>MySQL</span></div>
+<pre class="code"><span class="c">-- registros cuyo stock no cuadra</span>
+<span class="k">SELECT</span> a.id, a.stock,
+       <span class="f">SUM</span>(m.cantidad) <span class="k">AS</span> calculado
+<span class="k">FROM</span>   articulos a
+<span class="k">JOIN</span>   movimientos m <span class="k">ON</span> m.articulo_id = a.id
+<span class="k">GROUP BY</span> a.id, a.stock
+<span class="k">HAVING</span> a.stock &lt;&gt; <span class="f">SUM</span>(m.cantidad);</pre>
+        <p class="note" data-i18n="exp.vizcap">El tipo de consulta que usaba para detectar inconsistencias. No es código de la empresa.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- Proyectos -->
+  <section class="block wrap" id="proyectos">
+    <div class="sec-head">
+      <h2><span class="slab"><span class="metal" data-i18n="proj.title">Proyectos</span></span><span class="jp" lang="ja">実績</span></h2>
+      <p data-i18n="proj.intro">Tres proyectos propios, publicados y en uso. Cada uno nace de un problema real.</p>
+    </div>
+
+    <div class="stack-cards">
+      <!-- Fútbol: Playbook Pro -->
+      <article class="card feature">
+        <div class="body">
+          <div class="meta"><span class="tag" data-i18n="p0.tag">Proyecto destacado</span><span class="status"><i></i><span data-i18n="p0.status">En producción</span></span></div>
+          <h3>Playbook Pro</h3>
+          <div class="sub"><strong data-i18n="p0.sub">La app del cuerpo técnico de fútbol base</strong></div>
+          <p data-i18n="p0.desc">PWA para el móvil del segundo entrenador: cuenta los minutos de cada jugador durante el partido, prepara la semana del equipo y reúne una biblioteca de ejercicios. Sirve para fútbol 7 y fútbol 11, con varios equipos y clubes en el mismo móvil. Funciona sin conexión, sin cuentas y sin servidor.</p>
+          <div class="kpis">
+            <div><b>27</b><span class="label" data-i18n="p0.k1">archivos de pruebas</span></div>
+            <div><b>&lt;80 KB</b><span class="label" data-i18n="p0.k2">página de partido</span></div>
+            <div><b>200+</b><span class="label" data-i18n="p0.k3">ejercicios</span></div>
+            <div><b>80</b><span class="label" data-i18n="p0.k4">lecciones</span></div>
+          </div>
+        </div>
+        <div class="viz">
+          <div class="label"><span data-i18n="p0.viz">Sistema de juego</span>
+            <span class="fbtns" role="group" aria-label="Sistema">
+              <button type="button" id="f-321" data-f="321" aria-pressed="true">1-3-2-1</button>
+              <button type="button" id="f-231" data-f="231" aria-pressed="false">1-2-3-1</button>
+              <button type="button" id="f-312" data-f="312" aria-pressed="false">1-3-1-2</button>
+            </span>
+          </div>
+          <div class="formation"><svg viewBox="0 0 100 64" id="fsvg" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width=".5" style="color:var(--line)">
+              <rect x="1" y="1" width="98" height="62" rx="1"/><line x1="50" y1="1" x2="50" y2="63"/><circle cx="50" cy="32" r="8"/>
+              <rect x="1" y="17" width="16" height="30"/><rect x="83" y="17" width="16" height="30"/>
+            </g>
+          </svg></div>
+          <div class="label"><span data-i18n="p0.bars">Semáforo de reparto · ejemplo</span><span>% temporada</span></div>
+          <div class="bars" id="bars"></div>
+          <div class="legend mono"><span><i class="low"></i><span data-i18n="p0.lo">Juega poco</span></span><span><i class="mid"></i><span data-i18n="p0.ok">Equilibrado</span></span><span><i class="high"></i><span data-i18n="p0.hi">Juega mucho</span></span></div>
+        </div>
+
+        <div class="mods full">
+          <div><span class="label" data-i18n="p0.m1t">App 1 · Minutos</span><p data-i18n="p0.m1">El día de partido, con una mano: cambios tocando al jugador y al suplente, minutos en directo, sugerencia de cambio, plan de rotaciones equitativo, avisos y deshacer. Registro avanzado opcional de tiros, zonas, pérdidas y tarjetas.</p></div>
+          <div><span class="label" data-i18n="p0.m2t">App 2 · Equipo</span><p data-i18n="p0.m2">La semana: convocatoria justa con el motivo de cada decisión e imagen para WhatsApp, Game Plan, asistencia, sesiones, informe post-partido y análisis de temporada.</p></div>
+          <div><span class="label" data-i18n="p0.m3t">App 3 · Academia</span><p data-i18n="p0.m3">80 lecciones y más de 200 ejercicios con ficha profesional y filtros. Los dibujos se animan paso a paso con un motor SVG propio.</p></div>
+        </div>
+
+        <div class="eng full">
+          <span class="label" data-i18n="p0.eng">Ingeniería</span>
+          <ul>
+            <li data-i18n="p0.b1">JavaScript sin framework, Tailwind v4 compilado y service worker. La página del partido pesa menos de 80 KB comprimidos y no carga la biblioteca.</li>
+            <li data-i18n="p0.b2">27 archivos de pruebas automáticas con Playwright y Chromium sobre datos sintéticos, incluido rendimiento con la CPU 4 veces más lenta.</li>
+            <li data-i18n="p0.b3">Exportación a Excel con un contrato fijo de 7 hojas y scripts en Python que la vuelcan en el Excel maestro de cada equipo para analizarla en Power BI.</li>
+            <li data-i18n="p0.b4">Privacidad por diseño: son datos de menores, así que nunca salen del móvil y los jugadores se exportan con un código anónimo. Escapado de todo texto, protección contra inyección de fórmulas en CSV y cabeceras CSP.</li>
+          </ul>
+          <div class="chips"><span class="chip">JavaScript</span><span class="chip">PWA · Service Worker</span><span class="chip">Tailwind v4</span><span class="chip">localStorage</span><span class="chip">Playwright</span><span class="chip">Python</span><span class="chip">Power BI</span><span class="chip">Vercel</span></div>
+          <p class="note" data-i18n="p0.private">Código privado porque trata datos de menores. Puedo enseñarlo en una entrevista.</p>
+        </div>
+      </article>
+
+<!-- Sonae -->
+      <article class="card">
+        <div class="body">
+          <div class="meta"><span class="status"><i></i><span data-i18n="p1.status">Desplegado</span></span><span class="label">JP · ES · EN</span></div>
+          <h3 data-i18n="p1.title">Sonae · Monitor de riesgos naturales en Japón</h3>
+          <p data-i18n="p1.desc">Un panel único para seguir terremotos, tsunamis, tifones y alertas en Japón. Pensado para turistas hispanohablantes y angloparlantes, y también para residentes japoneses.</p>
+          <ul>
+            <li data-i18n="p1.b1">Sismos en tiempo real a partir del feed del USGS: magnitud, profundidad y epicentro sobre el mapa.</li>
+            <li data-i18n="p1.b2">Une dos apps anteriores (alertas sísmicas de Japón y el tiempo en España) en un solo producto.</li>
+            <li data-i18n="p1.b3">Diseño claro para consultarlo con prisa, desde el móvil.</li>
+          </ul>
+          <div class="chips"><span class="chip">JavaScript</span><span class="chip">USGS API</span><span class="chip">OpenWeatherMap</span><span class="chip">Vercel</span></div>
+          <div class="plinks"><a href="https://sonaeapp.vercel.app" target="_blank" rel="noopener">Demo</a><a href="https://github.com/Franciscojav812/sonae_app" target="_blank" rel="noopener" data-i18n="link.code">Código</a></div>
+        </div>
+        <div class="viz">
+          <div class="label"><span data-i18n="p1.viz">Sismograma (ilustrativo)</span><span class="mono" id="mag">M 4.8</span></div>
+          <canvas id="seismo" aria-hidden="true"></canvas>
+          <div class="label"><span data-i18n="p1.scale">Escala sísmica japonesa</span><span lang="ja">震度</span></div>
+          <div class="shindo" aria-label="Escala shindo de 0 a 7">
+            <span style="background:#D9E4EE">0</span><span style="background:#BFD6EA">1</span><span style="background:#9CC3E6">2</span><span style="background:#8FD3B0">3</span><span style="background:#E9E27A">4</span><span style="background:#F5C451">5-</span><span style="background:#F59A3C">5+</span><span style="background:#EE6A3A">6-</span><span style="background:#D8432F;color:#fff">6+</span><span style="background:#9E1F3F;color:#fff">7</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- CD/DVD -->
+      <article class="card">
+        <div class="body">
+          <div class="meta"><span class="status"><i></i><span>Release v1.0.0</span></span><span class="label">Python · Windows</span></div>
+          <h3 data-i18n="p2.title">Recuperador de archivos para CD y DVD</h3>
+          <p data-i18n="p2.desc">Aplicación de escritorio que rescata archivos de discos rayados o dañados. Una alternativa gratuita a herramientas como IsoBuster, escrita desde cero.</p>
+          <ul>
+            <li data-i18n="p2.b1">Acceso en crudo a la unidad con la API de Windows (<code>ctypes</code>, <code>CreateFileW</code> sobre <code>\\.\D:</code>).</li>
+            <li data-i18n="p2.b2">Parsers propios de ISO 9660 con Joliet y de UDF (ECMA-167), con los offsets del estándar.</li>
+            <li data-i18n="p2.b3">Si el sistema de archivos está roto, escanea sector a sector buscando firmas de archivo (magic bytes).</li>
+            <li data-i18n="p2.b4">Detecta multisesión, salta sectores defectuosos sin colgarse y usa hilos para no bloquear la interfaz.</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">ctypes · Win32</span><span class="chip">ISO 9660</span><span class="chip">UDF</span><span class="chip">CustomTkinter</span></div>
+          <div class="plinks"><a href="https://github.com/Franciscojav812/Recuperador-de-archivos-" target="_blank" rel="noopener" data-i18n="link.code">Código</a></div>
+        </div>
+        <div class="viz">
+          <div class="label"><span data-i18n="p2.viz">Descriptores de volumen que reconoce</span><span>LBA 16–19</span></div>
+<pre class="hex" aria-label="Volcado hexadecimal de ejemplo"><span class="o">00008000</span>  01 <span class="m">43 44 30 30 31</span> 01 00  57 49 4E 33 32 20 20 20  <span class="a">|.<span class="m">CD001</span>..WIN32   |</span>
+<span class="o">00008800</span>  02 <span class="m">43 44 30 30 31</span> 01 00  00 4A 00 6F 00 6C 00 69  <span class="a">|.<span class="m">CD001</span>...J.o.l.i|</span>
+<span class="o">00009000</span>  00 <span class="m">42 45 41 30 31</span> 01 00  00 00 00 00 00 00 00 00  <span class="a">|.<span class="m">BEA01</span>.........|</span>
+<span class="o">00009800</span>  00 <span class="m">4E 53 52 30 32</span> 01 00  00 00 00 00 00 00 00 00  <span class="a">|.<span class="m">NSR02</span>.........|</span></pre>
+          <p class="note" data-i18n="p2.vizcap">ISO 9660 primario · Joliet · inicio y firma UDF. Datos de ejemplo.</p>
+        </div>
+      </article>
+    </div>
+
+  </section>
+
+  <!-- Perfil -->
+  <section class="block wrap" id="perfil">
+    <div class="sec-head">
+      <h2><span class="slab"><span class="metal" data-i18n="prof.title">Perfil</span></span><span class="jp" lang="ja">自己紹介</span></h2>
+      <p data-i18n="prof.intro">Quién soy, qué estudio y hacia dónde voy.</p>
+    </div>
+    <div class="profile">
+      <div class="prose">
+        <p class="big" data-i18n="prof.big">Me gusta convertir datos en decisiones: qué falla en una base de datos, dónde tiembla la tierra, quién necesita más minutos en el campo.</p>
+        <p data-i18n="prof.p1">Terminé el Técnico Superior en Desarrollo de Aplicaciones Multiplataforma en junio de 2026 y ahora estudio el Grado en Ingeniería Informática. Programo en Java, Kotlin, Python y SQL, y desarrollo para la web con JavaScript.</p>
+        <p data-i18n="prof.p2">Quiero especializarme en ciencia de datos, sobre todo aplicada al fútbol, en cloud y en desarrollo full stack. Mis prácticas en COFARES me enseñaron a trabajar con datos reales de producción, donde una consulta mal hecha tiene consecuencias.</p>
+        <p data-i18n="prof.p3">Hablo español y japonés como lenguas nativas. Puedo trabajar directamente con equipos, clientes y documentación en Japón, sin intermediarios.</p>
+        <p data-i18n="prof.p4">Estoy dispuesto a reubicarme por trabajo, dentro y fuera de España.</p>
+      </div>
+      <div class="side">
+        <ol class="timeline">
+          <li class="now"><span class="label" data-i18n="tl.d0">2026 – hoy</span><h3 data-i18n="tl.t0">Grado en Ingeniería Informática</h3><p data-i18n="tl.p0">En curso.</p></li>
+          <li><span class="label">2024 – 2026</span><h3 data-i18n="tl.t1">Técnico Superior en DAM</h3><p data-i18n="tl.p1">Desarrollo de Aplicaciones Multiplataforma. Terminado en junio de 2026, con prácticas en COFARES.</p></li>
+          <li><span class="label">2022 – 2024</span><h3 data-i18n="tl.t2">Bachillerato</h3></li>
+        </ol>
+        <div>
+          <span class="label" data-i18n="lang.title">Idiomas</span>
+          <div class="langs">
+            <div class="lang"><span data-i18n="lang.es">Español</span><span class="label" data-i18n="lang.native">Nativo</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+            <div class="lang"><span data-i18n="lang.ja">Japonés</span><span class="label" data-i18n="lang.native2">Nativo</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+            <div class="lang"><span data-i18n="lang.en">Inglés</span><span class="label" data-i18n="lang.enlv">Preparando B2</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="goal"></i><i></i><i></i></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section class="block wrap" id="stack">
+    <div class="sec-head">
+      <h2><span class="slab"><span class="metal">Stack</span></span><span class="jp" lang="ja">技術</span></h2>
+      <p data-i18n="stack.intro">Lo que uso en el trabajo y en los proyectos de arriba, agrupado por capa.</p>
+    </div>
+    <div class="stack">
+      <div><h3 data-i18n="st.1">Lenguajes</h3><ul><li>Java</li><li>Kotlin</li><li>Python</li><li>SQL</li><li>JavaScript · TypeScript</li></ul></div>
+      <div><h3 data-i18n="st.2">Datos</h3><ul><li>MySQL</li><li data-i18n="st.py">Python para análisis</li><li>Power BI</li><li>Excel · SheetJS</li></ul></div>
+      <div><h3>Web</h3><ul><li>HTML · CSS</li><li>Tailwind</li><li>Next.js</li><li>PWA</li></ul></div>
+      <div><h3 data-i18n="st.4">Cloud y despliegue</h3><ul><li>Vercel</li><li>GitHub Pages</li><li>Supabase</li><li>Git · GitHub</li></ul></div>
+      <div><h3 data-i18n="st.5">Sistemas</h3><ul><li>Win32 API · ctypes</li><li>ISO 9660 · UDF</li><li>Bash</li><li>PowerShell</li></ul></div>
+      <div><h3 data-i18n="st.6">Herramientas</h3><ul><li>Playwright</li><li>IntelliJ · Spring Tools</li><li>VS Code</li></ul></div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contact wrap" id="contacto">
+    <h2><span class="slab"><span class="metal" data-i18n="ct.title">Hablemos</span></span><span class="jp" lang="ja">お問い合わせ</span></h2>
+    <p data-i18n="ct.p">Si buscas a alguien que trabaje con datos, aprenda rápido y hable japonés, hablemos. Prefiero el primer contacto por LinkedIn.</p>
+    <div class="move"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span data-i18n="ct.move">Disponible para reubicarme, dentro y fuera de España.</span></div>
+    <div class="ctas">
+      <a class="btn primary" href="https://www.linkedin.com/in/francisco-javier-alcaraz-bolivar-70b6a032b" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/Franciscojav812" target="_blank" rel="noopener">GitHub ↗</a>
+      <button type="button" class="btn" id="reveal" aria-expanded="false" aria-controls="mailbox"><span data-i18n="ct.reveal">Mostrar email</span></button>
+    </div>
+    <div class="mailbox" id="mailbox" hidden>
+      <span class="mail" id="mail"></span>
+      <button type="button" class="btn primary" id="copy"><span data-i18n="ct.copy">Copiar</span></button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap mono"><span data-i18n="ft.l">Diseñado y programado por Francisco Javier Alcaraz</span><span>© 2026 · Madrid</span></div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+</div>
+
+<script>
+(() => {
+  const app = document.getElementById('app');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = id => document.getElementById(id);
+
+  /* ---------- i18n ---------- */
+  const T = {
+    en:{
+      "nav.exp":"Experience","nav.projects":"Projects","nav.profile":"Profile","nav.contact":"Contact",
+      "hero.eyebrow":"Full stack & data developer · Madrid",
+      "hero.lede":"I build software that works with data: incidents in a production database, live earthquake feeds, football matches minute by minute. I hold a Higher Diploma in Multiplatform App Development, I'm studying Computer Engineering, and I'm <b>native bilingual in Spanish and Japanese</b>. My focus is <b>data science applied to football, cloud and full stack development</b>.",
+      "hero.cta1":"See projects","hero.cta2":"Download CV","hero.cta3":"Get in touch",
+      "heat.title":"Player heat map","heat.sim":"Simulated data","heat.min":"Minute","heat.dist":"Distance","heat.vmax":"Top speed","heat.spr":"Sprints",
+      "heat.cap":"Simulated tracking on a 7-a-side pitch (60 × 40 m). Move your cursor or tap the pitch to steer the player.",
+      "r.focus":"Focus","r.focusv":"Data science (football) · Cloud · Full stack",
+      "r.study":"Education","r.studyv":"Computer Engineering (ongoing) · DAM Higher Diploma",
+      "r.lang":"Languages","r.langv":"Native Spanish & Japanese · English (working towards B2)",
+      "r.move":"Availability","r.movev":"Open to relocating, in Spain or abroad",
+      "exp.title":"Experience","exp.intro":"Hands-on work with production data at a pharmaceutical distribution company.",
+      "exp.dates":"Feb 2026 – Jun 2026 · 5 months","exp.place":"Madrid · On-site",
+      "exp.role":"Backend Support Development & SQL Analysis","exp.company":"COFARES · Internship contract",
+      "exp.desc":"Functional and technical support for Farmanager, the company's in-house pharmacy management software, analysing how the system behaves at the data level.",
+      "exp.b1":"Diagnosed and resolved incidents with MySQL, writing queries and scripts to debug errors, validate data and detect inconsistencies.",
+      "exp.b2":"Migrated data from third-party applications into the in-house system, keeping it consistent and fitted to the relational model.",
+      "exp.b3":"Supported corrective and preventive maintenance through SQL.",
+      "exp.b4":"Documented incidents, fixes and procedures for traceability and hand-off to higher support tiers and the development team.",
+      "exp.b5":"Analysed recurring error patterns and proposed data and process improvements.",
+      "exp.c1":"Relational model","exp.c2":"Data migration","exp.c3":"Technical documentation",
+      "exp.viz":"Illustrative example","exp.vizcap":"The kind of query I used to find inconsistencies. Not company code.",
+      "proj.title":"Projects","proj.intro":"Three self-initiated projects, published and in use. Each one started from a real problem.",
+      "p0.tag":"Featured project","p0.status":"In production","p0.sub":"The app for youth football coaching staff",
+      "p0.desc":"A PWA for the assistant coach's phone: it counts every player's minutes during the match, prepares the team's week and gathers a library of drills. Works for 7-a-side and 11-a-side, with several teams and clubs on one phone. Runs offline, with no accounts and no server.",
+      "p0.k1":"test files","p0.k2":"match page","p0.k3":"drills","p0.k4":"lessons",
+      "p0.viz":"Formation","p0.bars":"Playing-time traffic light · sample","p0.lo":"Plays too little","p0.ok":"Balanced","p0.hi":"Plays a lot",
+      "p0.m1t":"App 1 · Minutes","p0.m1":"Match day, one-handed: substitutions by tapping the player and the sub, live minutes, substitution suggestions, a fair rotation plan, alerts and undo. Optional advanced logging of shots, zones, turnovers and cards.",
+      "p0.m2t":"App 2 · Team","p0.m2":"The week: a fair squad call-up with the reason behind each decision and an image for WhatsApp, Game Plan, attendance, sessions, post-match report and season analysis.",
+      "p0.m3t":"App 3 · Academy","p0.m3":"80 lessons and over 200 drills with a professional spec sheet and filters. Diagrams animate step by step with a custom SVG engine.",
+      "p0.eng":"Engineering",
+      "p0.b1":"Framework-free JavaScript, compiled Tailwind v4 and a service worker. The match page is under 80 KB compressed and never loads the drill library.",
+      "p0.b2":"27 automated test files with Playwright and Chromium on synthetic data, including performance under a 4× CPU slowdown.",
+      "p0.b3":"Excel export with a fixed 7-sheet contract, plus Python scripts that merge it into each team's master workbook for analysis in Power BI.",
+      "p0.b4":"Privacy by design: it holds minors' data, so nothing leaves the phone and players are exported under an anonymous code. All text is escaped, CSV exports are protected against formula injection, and CSP headers are set.",
+      "p0.private":"The code is private because it handles minors' data. Happy to walk through it in an interview.",
+      "p1.status":"Live","p1.title":"Sonae · Natural hazard monitor for Japan",
+      "p1.desc":"One dashboard to follow earthquakes, tsunamis, typhoons and alerts across Japan. Built for Spanish- and English-speaking visitors, and for residents of Japan too.",
+      "p1.b1":"Real-time quakes from the USGS feed: magnitude, depth and epicentre on the map.",
+      "p1.b2":"Merges two earlier apps (Japan quake alerts and Spanish weather) into a single product.",
+      "p1.b3":"Clear design for checking quickly on a phone.",
+      "link.code":"Code","p1.viz":"Seismogram (illustrative)","p1.scale":"Japanese seismic intensity scale",
+      "p2.title":"File recovery tool for CDs and DVDs",
+      "p2.desc":"A desktop app that rescues files from scratched or damaged discs. A free alternative to tools like IsoBuster, written from scratch.",
+      "p2.b1":"Raw drive access through the Windows API (<code>ctypes</code>, <code>CreateFileW</code> on <code>\\\\.\\D:</code>).",
+      "p2.b2":"Hand-written parsers for ISO 9660 with Joliet and for UDF (ECMA-167), using the standards' offsets.",
+      "p2.b3":"When the file system is broken, it scans sector by sector for file signatures (magic bytes).",
+      "p2.b4":"Detects multisession discs, skips bad sectors without hanging, and uses threads to keep the UI responsive.",
+      "p2.viz":"Volume descriptors it recognises","p2.vizcap":"Primary ISO 9660 · Joliet · UDF start and signature. Sample data.",
+      "prof.title":"Profile","prof.intro":"Who I am, what I'm studying and where I'm heading.",
+      "prof.big":"I like turning data into decisions: what's broken in a database, where the ground is shaking, which player needs more minutes on the pitch.",
+      "prof.p1":"I finished my Higher Diploma in Multiplatform Application Development (DAM) in June 2026 and I'm now studying a Bachelor's in Computer Engineering. I code in Java, Kotlin, Python and SQL, and build for the web with JavaScript.",
+      "prof.p2":"I want to specialise in data science, especially applied to football, in cloud and in full stack development. My internship at COFARES taught me to work with real production data, where a careless query has consequences.",
+      "prof.p3":"Spanish and Japanese are both my native languages. I can work directly with teams, clients and documentation in Japan, with no go-between.",
+      "prof.p4":"I'm willing to relocate for work, in Spain or abroad.",
+      "tl.d0":"2026 – now","tl.t0":"Bachelor's in Computer Engineering","tl.p0":"In progress.",
+      "tl.t1":"DAM Higher Diploma","tl.p1":"Multiplatform Application Development. Completed June 2026, with an internship at COFARES.","tl.t2":"Baccalaureate",
+      "lang.title":"Languages","lang.es":"Spanish","lang.ja":"Japanese","lang.en":"English","lang.native":"Native","lang.native2":"Native","lang.enlv":"Preparing B2",
+      "stack.intro":"What I use at work and in the projects above, grouped by layer.",
+      "st.1":"Languages","st.2":"Data","st.py":"Python for analysis","st.4":"Cloud & deployment","st.5":"Systems","st.6":"Tools",
+      "ct.title":"Let's talk","ct.p":"If you're looking for someone who works with data, learns fast and speaks Japanese, let's talk. I prefer a first message on LinkedIn.",
+      "ct.move":"Open to relocating, in Spain or abroad.","ct.reveal":"Show email","ct.copy":"Copy",
+      "ft.l":"Designed and built by Francisco Javier Alcaraz",
+      "_copied":"Email copied","_copyfail":"Select the address to copy it"
+    },
+    ja:{
+      "nav.exp":"職歴","nav.projects":"プロジェクト","nav.profile":"プロフィール","nav.contact":"連絡先",
+      "hero.eyebrow":"フルスタック・データ開発者 · マドリード",
+      "hero.lede":"本番データベースの障害、リアルタイムの地震情報、試合ごとの出場時間。データと向き合うソフトウェアを作っています。DAM（マルチプラットフォーム・アプリ開発）上級技術者課程を修了し、現在は情報工学の学士課程に在籍。<b>スペイン語・日本語のネイティブバイリンガル</b>です。注力分野は<b>サッカーを中心としたデータサイエンス、クラウド、フルスタック開発</b>。",
+      "hero.cta1":"プロジェクトを見る","hero.cta2":"履歴書をダウンロード","hero.cta3":"連絡する",
+      "heat.title":"選手のヒートマップ","heat.sim":"シミュレーション","heat.min":"経過時間","heat.dist":"走行距離","heat.vmax":"最高速度","heat.spr":"スプリント",
+      "heat.cap":"7人制サッカーのピッチ（60 × 40 m）でのトラッキングをシミュレーション。カーソルを動かすか、ピッチをタップすると選手を動かせます。",
+      "r.focus":"専門","r.focusv":"データサイエンス（サッカー）· クラウド · フルスタック",
+      "r.study":"学歴","r.studyv":"情報工学 学士課程（在学中）· DAM 上級技術者",
+      "r.lang":"言語","r.langv":"スペイン語・日本語（母語）· 英語（B2学習中）",
+      "r.move":"勤務地","r.movev":"スペイン国内外への転居が可能",
+      "exp.title":"職歴","exp.intro":"医薬品流通企業で、本番データを扱った実務経験。",
+      "exp.dates":"2026年2月 – 2026年6月 · 5か月","exp.place":"マドリード · 出社",
+      "exp.role":"バックエンドサポート開発・SQL分析","exp.company":"COFARES · インターンシップ契約",
+      "exp.desc":"社内開発の薬局管理ソフト「Farmanager」の機能・技術サポートを担当し、データレベルでシステムの挙動を分析しました。",
+      "exp.b1":"MySQLを用いた障害の分析・診断・解決。エラーのデバッグ、データ検証、不整合の検出のためにクエリやスクリプトを設計・実行。",
+      "exp.b2":"他社アプリから社内システムへのデータ移行に参加し、データの整合性とリレーショナルモデルへの適合を担保。",
+      "exp.b3":"SQLによる是正保守・予防保守の支援。",
+      "exp.b4":"障害内容・対応策・運用手順を技術文書にまとめ、トレーサビリティと上位サポート・開発チームとの連携を向上。",
+      "exp.b5":"繰り返し発生するエラーのパターンを分析し、データと業務プロセスの改善を提案。",
+      "exp.c1":"リレーショナルモデル","exp.c2":"データ移行","exp.c3":"技術文書",
+      "exp.viz":"クエリの例（イメージ）","exp.vizcap":"不整合の検出に使っていた種類のクエリです。会社のコードではありません。",
+      "proj.title":"プロジェクト","proj.intro":"公開・運用中の自主開発プロジェクト3つ。どれも実際の課題から生まれました。",
+      "p0.tag":"注目プロジェクト","p0.status":"本番運用中","p0.sub":"少年サッカーのコーチングスタッフ向けアプリ",
+      "p0.desc":"アシスタントコーチのスマホ用PWA。試合中に各選手の出場時間を計測し、1週間のチーム準備を行い、練習メニューのライブラリをまとめています。7人制・11人制に対応し、1台で複数のチーム・クラブを管理できます。オフラインで動作し、アカウントもサーバーも不要です。",
+      "p0.k1":"テストファイル","p0.k2":"試合ページ","p0.k3":"練習メニュー","p0.k4":"レッスン",
+      "p0.viz":"フォーメーション","p0.bars":"出場時間の配分 · サンプル","p0.lo":"少ない","p0.ok":"適正","p0.hi":"多い",
+      "p0.m1t":"アプリ1 · 出場時間","p0.m1":"片手で使える試合当日の画面。選手と控えをタップして交代、リアルタイムの出場時間、交代の提案、公平なローテーション計画、アラート、取り消し。シュート、ゾーン、ボールロスト、カードの詳細記録も任意で可能。",
+      "p0.m2t":"アプリ2 · チーム","p0.m2":"1週間の準備。判断理由つきの公平な招集案とWhatsApp用画像、ゲームプラン、出欠、練習セッション、試合後レポート、シーズン分析。",
+      "p0.m3t":"アプリ3 · アカデミー","p0.m3":"80のレッスンと200以上の練習メニュー（詳細シート・フィルター付き）。自作のSVG描画エンジンで図が一歩ずつアニメーションします。",
+      "p0.eng":"エンジニアリング",
+      "p0.b1":"フレームワークなしのJavaScript、コンパイル済みTailwind v4、Service Worker。試合ページは圧縮後80 KB未満で、ライブラリを読み込みません。",
+      "p0.b2":"PlaywrightとChromiumによる27ファイルの自動テストを合成データで実行。CPUを4倍遅くした状態での性能テストも含みます。",
+      "p0.b3":"7シート固定の契約に基づくExcel出力と、各チームのマスターExcelへ反映するPythonスクリプト。Power BIで分析できます。",
+      "p0.b4":"プライバシー・バイ・デザイン。未成年のデータなので端末の外に出ず、選手は匿名コードで出力。全テキストのエスケープ、CSVの数式インジェクション対策、CSPヘッダーを実装。",
+      "p0.private":"未成年のデータを扱うため、コードは非公開です。面接でご説明できます。",
+      "p1.status":"公開中","p1.title":"Sonae · 日本の自然災害モニター",
+      "p1.desc":"地震・津波・台風・各種警報をひとつの画面で確認できるダッシュボード。スペイン語・英語を話す旅行者と、日本に住む人の両方に向けて作りました。",
+      "p1.b1":"USGSのフィードからリアルタイムで地震を取得し、マグニチュード・深さ・震源を地図に表示。",
+      "p1.b2":"以前の2つのアプリ（日本の地震アラートとスペインの天気）をひとつの製品に統合。",
+      "p1.b3":"急いでいる時でもスマホで素早く確認できる、見やすいデザイン。",
+      "link.code":"コード","p1.viz":"地震波形（イメージ）","p1.scale":"気象庁 震度階級",
+      "p2.title":"CD・DVD ファイル復旧ツール",
+      "p2.desc":"傷ついた・破損したディスクからファイルを救出するデスクトップアプリ。IsoBuster などの無料代替として、ゼロから開発しました。",
+      "p2.b1":"Windows API による生のドライブアクセス（<code>ctypes</code>、<code>\\\\.\\D:</code> への <code>CreateFileW</code>）。",
+      "p2.b2":"ISO 9660（Joliet対応）と UDF（ECMA-167）のパーサーを規格のオフセット通りに自作。",
+      "p2.b3":"ファイルシステムが壊れている場合は、セクター単位でファイルシグネチャ（マジックバイト）を走査。",
+      "p2.b4":"マルチセッションを検出し、不良セクターでも止まらず、スレッドでUIの応答性を維持。",
+      "p2.viz":"認識するボリューム記述子","p2.vizcap":"ISO 9660 プライマリ · Joliet · UDF の開始と署名。サンプルデータ。",
+      "prof.title":"プロフィール","prof.intro":"私について、学んでいること、目指す方向。",
+      "prof.big":"データを意思決定に変えるのが好きです。データベースのどこが壊れているのか、どこで地震が起きたのか、どの選手にもっと出場時間が必要なのか。",
+      "prof.p1":"2026年6月にDAM（マルチプラットフォーム・アプリ開発）上級技術者課程を修了し、現在は情報工学の学士課程で学んでいます。Java、Kotlin、Python、SQLを使い、WebではJavaScriptで開発しています。",
+      "prof.p2":"データサイエンス（特にサッカーへの応用）、クラウド、フルスタック開発を専門にしたいと考えています。COFARESでのインターンでは、クエリひとつのミスが影響する本番データの扱い方を学びました。",
+      "prof.p3":"スペイン語と日本語はどちらも母語です。日本のチームや顧客、日本語の資料とも通訳なしで直接やり取りできます。",
+      "prof.p4":"仕事のためなら、スペイン国内外どこへでも転居できます。",
+      "tl.d0":"2026年 – 現在","tl.t0":"情報工学 学士課程","tl.p0":"在学中。",
+      "tl.t1":"DAM 上級技術者課程","tl.p1":"マルチプラットフォーム・アプリ開発。2026年6月修了、COFARESでインターンシップ。","tl.t2":"バチジェラート（高校課程）",
+      "lang.title":"言語","lang.es":"スペイン語","lang.ja":"日本語","lang.en":"英語","lang.native":"母語","lang.native2":"母語","lang.enlv":"B2 取得に向け学習中",
+      "stack.intro":"業務と上記プロジェクトで使っている技術を、レイヤー別にまとめました。",
+      "st.1":"言語","st.2":"データ","st.py":"Python（データ分析）","st.4":"クラウド・デプロイ","st.5":"システム","st.6":"ツール",
+      "ct.title":"連絡先","ct.p":"データを扱え、学ぶのが速く、日本語が話せる人材をお探しなら、ぜひご連絡ください。最初のご連絡はLinkedInからお願いします。",
+      "ct.move":"スペイン国内外への転居が可能です。","ct.reveal":"メールアドレスを表示","ct.copy":"コピー",
+      "ft.l":"デザイン・開発：アルカラス・フランシスコ・ハビエル",
+      "_copied":"メールアドレスをコピーしました","_copyfail":"アドレスを選択してコピーしてください"
+    }
+  };
+  const nodes = [...document.querySelectorAll('[data-i18n]')];
+  const ES = {}; nodes.forEach(n => { ES[n.dataset.i18n] = n.innerHTML; });
+  ES._copied = "Email copiado"; ES._copyfail = "Selecciona la dirección para copiarla";
+  T.es = ES;
+  let lang = 'es';
+  const t = k => (T[lang] && T[lang][k]) || ES[k] || k;
+  function setLang(l){
+    lang = T[l] ? l : 'es';
+    app.dataset.lang = lang;
+    nodes.forEach(n => { const v = T[lang][n.dataset.i18n] ?? ES[n.dataset.i18n]; if (v != null) n.innerHTML = v; });
+    document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.l === lang)));
+    try { document.documentElement.lang = lang; localStorage.setItem('fja-lang', lang); } catch(e){}
+  }
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.l)));
+  try { const s = localStorage.getItem('fja-lang'); if (s && s !== 'es') setLang(s); } catch(e){}
+
+  /* ---------- email (no está en el HTML: se monta al pulsar) ---------- */
+  const toast = $('toast');
+  const show = msg => { toast.textContent = msg; toast.classList.add('show'); clearTimeout(show.t); show.t = setTimeout(() => toast.classList.remove('show'), 1800); };
+  const parts = ['ravilobzaraclaocsicnarf', 'moc.liamg'];
+  const addr = () => parts[0].split('').reverse().join('') + String.fromCharCode(64) + parts[1].split('').reverse().join('');
+  $('reveal').addEventListener('click', e => {
+    $('mail').textContent = addr(); $('mailbox').hidden = false; e.currentTarget.setAttribute('aria-expanded','true'); e.currentTarget.hidden = true;
+  });
+  $('copy').addEventListener('click', () => {
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents($('mail')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); show(t('_copyfail')); };
+    try { navigator.clipboard.writeText(addr()).then(() => show(t('_copied')), fallback); } catch(e){ fallback(); }
+  });
+
+  /* ---------- helpers ---------- */
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const hex = h => { h = h.replace('#',''); const n = parseInt(h,16); return [n>>16&255, n>>8&255, n&255]; };
+  const mix = (a,b,k) => a.map((v,i) => Math.round(v + (b[i]-v)*k));
+  const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+  const gauss = () => { let u=0,v=0; while(!u) u=Math.random(); while(!v) v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); };
+
+  /* ---------- heat map ---------- */
+  const PW = 60, PH = 40, GX = 60, GY = 40;
+  const cv = $('pitch'), ctx = cv.getContext('2d');
+  const off = document.createElement('canvas'); off.width = GX; off.height = GY;
+  const octx = off.getContext('2d'), oimg = octx.createImageData(GX, GY);
+  const stops = [hex(css('--surface')), hex(css('--ai')), hex(css('--shu')), [255,232,205]];
+  const LUT = []; for (let i = 0; i < 256; i++){ const x = i/255*3, k = Math.min(2, Math.floor(x)); LUT.push(mix(stops[k], stops[k+1], x-k)); }
+  const lineCol = css('--ink'), shu = css('--shu'), paperCol = css('--paper');
+  let heat, P, target, nextPick, simT, dist, vmax, sprints, inSprint, userOn = false, W = 0, H = 0, dpr = 1;
+  function reset(){ heat = new Float32Array(GX*GY); P = {x:20,y:20,vx:0,vy:0}; target = {x:40,y:12}; nextPick = 0; simT = 0; dist = 0; vmax = 0; sprints = 0; inSprint = false; }
+  function pick(){
+    const r = Math.random();
+    if (r < 0.18) target = {x: clamp(18 + gauss()*6, 3, 57), y: clamp(14 + gauss()*6, 3, 37)};        // repliegue
+    else if (r < 0.3) target = {x: clamp(52 + gauss()*3, 3, 57), y: clamp(20 + gauss()*5, 3, 37)};     // ataque al área
+    else target = {x: clamp(40 + gauss()*8, 3, 57), y: clamp(9 + gauss()*5, 2, 38)};                   // banda derecha
+    nextPick = simT + 2 + Math.random()*5;
+  }
+  function sim(dt){
+    if (!userOn && simT > nextPick) pick();
+    const dx = target.x - P.x, dy = target.y - P.y, d = Math.hypot(dx, dy) || 1;
+    const want = Math.min(7.6, d*0.9 + (d > 8 ? 2 : 0));
+    const k = Math.min(1, 2.6*dt);
+    P.vx += (dx/d*want - P.vx)*k; P.vy += (dy/d*want - P.vy)*k;
+    P.x = clamp(P.x + P.vx*dt, 0.5, PW-0.5); P.y = clamp(P.y + P.vy*dt, 0.5, PH-0.5);
+    const sp = Math.hypot(P.vx, P.vy);
+    dist += sp*dt; vmax = Math.max(vmax, sp);
+    if (sp > 6.2 && !inSprint){ sprints++; inSprint = true; } else if (sp < 4.5) inSprint = false;
+    const cx = P.x/PW*GX, cy = P.y/PH*GY;
+    for (let j = -3; j <= 3; j++) for (let i = -3; i <= 3; i++){
+      const gx = Math.floor(cx)+i, gy = Math.floor(cy)+j;
+      if (gx < 0 || gy < 0 || gx >= GX || gy >= GY) continue;
+      const dd = (gx+.5-cx)**2 + (gy+.5-cy)**2;
+      heat[gy*GX+gx] += Math.exp(-dd/3.2)*dt;
+    }
+    simT += dt;
+    if (simT >= 2400) reset();
+  }
+  function size(){
+    const r = cv.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1);
+    W = r.width; H = r.height; cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function render(){
+    if (!W) return;
+    let max = 0.0001; for (let i = 0; i < heat.length; i++) if (heat[i] > max) max = heat[i];
+    for (let i = 0; i < heat.length; i++){
+      const c = LUT[Math.min(255, Math.round(Math.pow(heat[i]/max, .55)*255))];
+      oimg.data[i*4] = c[0]; oimg.data[i*4+1] = c[1]; oimg.data[i*4+2] = c[2]; oimg.data[i*4+3] = 255;
+    }
+    octx.putImageData(oimg, 0, 0);
+    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(off, 0, 0, W, H);
+    const sx = W/PW, sy = H/PH;
+    ctx.save(); ctx.strokeStyle = lineCol; ctx.globalAlpha = .38; ctx.lineWidth = 1;
+    ctx.strokeRect(.5, .5, W-1, H-1);
+    ctx.beginPath(); ctx.moveTo(W/2, 0); ctx.lineTo(W/2, H); ctx.stroke();
+    ctx.beginPath(); ctx.arc(W/2, H/2, 6*sx, 0, Math.PI*2); ctx.stroke();
+    [[0,1],[PW,-1]].forEach(([x0,s]) => {
+      ctx.strokeRect(x0*sx, 8*sy, s*12*sx, 24*sy);
+      ctx.strokeRect(x0*sx, 14*sy, s*4*sx, 12*sy);
+    });
+    ctx.restore();
+    // jugador
+    const px = P.x*sx, py = P.y*sy;
+    if (userOn){ ctx.save(); ctx.strokeStyle = lineCol; ctx.globalAlpha = .5; ctx.setLineDash([3,3]); ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(target.x*sx, target.y*sy); ctx.stroke(); ctx.restore(); }
+    ctx.beginPath(); ctx.arc(px, py, 5.5, 0, Math.PI*2); ctx.fillStyle = shu; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = paperCol; ctx.stroke();
+    $('s-min').textContent = Math.floor(simT/60) + "'";
+    $('s-dist').textContent = (dist/1000).toFixed(2) + ' km';
+    $('s-vmax').textContent = (vmax*3.6).toFixed(1) + ' km/h';
+    $('s-spr').textContent = sprints;
+  }
+  const toPitch = e => { const r = cv.getBoundingClientRect(); return {x: clamp((e.clientX-r.left)/r.width*PW, 1, PW-1), y: clamp((e.clientY-r.top)/r.height*PH, 1, PH-1)}; };
+  cv.addEventListener('pointermove', e => { if (e.pointerType === 'mouse' || e.buttons){ target = toPitch(e); userOn = true; } });
+  cv.addEventListener('pointerdown', e => { target = toPitch(e); userOn = true; if (e.pointerType !== 'mouse'){ clearTimeout(cv.t); cv.t = setTimeout(() => { userOn = false; nextPick = simT; }, 2500); } });
+  cv.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse'){ userOn = false; nextPick = simT; } });
+
+  /* ---------- seismogram ---------- */
+  const sc = $('seismo'), sx2 = sc.getContext('2d');
+  let SW = 0, SH = 0, sT = 0; const trace = [];
+  function sSize(){ const r = sc.getBoundingClientRect(); const d = Math.min(2, devicePixelRatio||1); SW = r.width; SH = r.height; sc.width = SW*d; sc.height = SH*d; sx2.setTransform(d,0,0,d,0,0); }
+  function amp(p){
+    const n = (Math.random()-0.5)*0.05;
+    if (p < 0.22) return n;
+    if (p < 0.4) return n + (Math.random()-0.5)*0.35*Math.exp(-(p-0.22)*6);
+    return n + Math.sin(p*260)*0.9*Math.exp(-(p-0.4)*4.2)*(0.6+Math.random()*0.4);
+  }
+  function buildTrace(){ trace.length = 0; for (let i = 0; i < 600; i++) trace.push(amp(i/600)); }
+  function drawSeismo(){
+    if (!SW) return;
+    sx2.clearRect(0,0,SW,SH);
+    sx2.strokeStyle = css('--line'); sx2.lineWidth = 1;
+    for (let y = 1; y < 4; y++){ sx2.beginPath(); sx2.moveTo(0, SH*y/4); sx2.lineTo(SW, SH*y/4); sx2.stroke(); }
+    const shown = reduce ? trace.length : Math.min(trace.length, sT);
+    sx2.strokeStyle = shu; sx2.lineWidth = 1.4; sx2.beginPath();
+    for (let i = 0; i < shown; i++){ const x = i/(trace.length-1)*SW, y = SH/2 - trace[i]*SH*0.45; i ? sx2.lineTo(x,y) : sx2.moveTo(x,y); }
+    sx2.stroke();
+    sx2.fillStyle = css('--muted'); sx2.font = '500 10px ' + css('--f-mono');
+    [[0.22,'P'],[0.4,'S']].forEach(([p,l]) => { if (shown/trace.length > p){ const x = p*SW; sx2.fillRect(x, 6, 1, SH-12); sx2.fillText(l, x+4, 14); } });
+  }
+
+  /* ---------- formation ---------- */
+  const F = {
+    "321": [[30,12],[30,32],[30,52],[56,20],[56,44],[80,32]],
+    "231": [[30,20],[30,44],[54,12],[54,32],[54,52],[80,32]],
+    "312": [[30,12],[30,32],[30,52],[52,32],[78,20],[78,44]]
+  };
+  const svg = $('fsvg'), NS = 'http://www.w3.org/2000/svg';
+  const gk = document.createElementNS(NS,'circle'); gk.setAttribute('class','pl gk'); gk.setAttribute('cx',8); gk.setAttribute('cy',32); gk.setAttribute('r',3.2); svg.appendChild(gk);
+  const dots = F["321"].map(([x,y]) => { const c = document.createElementNS(NS,'circle'); c.setAttribute('class','pl'); c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',3.2); svg.appendChild(c); return c; });
+  document.querySelectorAll('.fbtns button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.fbtns button').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+    F[b.dataset.f].forEach(([x,y], i) => { dots[i].setAttribute('cx', x); dots[i].setAttribute('cy', y); dots[i].style.cx = x; dots[i].style.cy = y; });
+  }));
+
+  /* ---------- minutes bars (example) ---------- */
+  const share = [91,78,70,64,55,36,27];
+  $('bars').innerHTML = share.map((m,i) => `<div class="bar"><span>J${i+1}</span><span class="track"><span class="fill ${m<40?'low':m>85?'high':'mid'}" style="width:${m}%"></span></span><span>${m}%</span></div>`).join('');
+
+  /* ---------- name decode ---------- */
+  function decode(){
+    if (reduce) return;
+    const glyphs = 'アカサタナハマヤラワ0123456789ABCDEF';
+    document.querySelectorAll('#name .first, #name .second').forEach((el, k) => {
+      const final = el.textContent; let f = 0; const total = 22 + k*8;
+      const id = setInterval(() => {
+        f++;
+        el.textContent = final.split('').map((ch, i) => (ch === ' ' || i < (f/total)*final.length) ? ch : glyphs[(Math.random()*glyphs.length)|0]).join('');
+        if (f >= total){ clearInterval(id); el.textContent = final; }
+      }, 28);
+    });
+  }
+
+  /* ---------- boot ---------- */
+  reset(); size(); sSize(); buildTrace();
+  for (let i = 0; i < (reduce ? 14400 : 2400); i++) sim(1/6);   // arranca con un mapa ya formado
+  render();
+  if (reduce){ drawSeismo(); }
+  else {
+    decode();
+    let visible = true, last = performance.now();
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
+    sT = trace.length;
+    const loop = ts => {
+      const dtReal = Math.min(0.05, (ts - last)/1000); last = ts;
+      if (visible){ const steps = 6; for (let i = 0; i < steps; i++) sim(dtReal*14/steps); render(); }
+      sT += 4; if (sT > trace.length + 160){ sT = 0; buildTrace(); $('mag').textContent = 'M ' + (4 + Math.random()*2.6).toFixed(1); }
+      drawSeismo();
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { size(); sSize(); render(); drawSeismo(); }, 150); });
+})();
+</script>
+
+</body>
+</html>
