@@ -243,7 +243,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <p class="lede" data-i18n="hero.lede">Hago software que trabaja con datos: incidencias en una base de datos de producción, terremotos en tiempo real, partidos de fútbol minuto a minuto. Técnico Superior en DAM, estudiante de Ingeniería Informática y <b>bilingüe nativo español–japonés</b>. Me centro en <b>ciencia de datos aplicada al fútbol, cloud y desarrollo full stack</b>.</p>
         <div class="ctas">
           <a class="btn primary" href="#proyectos"><span data-i18n="hero.cta1">Ver proyectos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-          <a class="btn" href="https://portfoli-dev-franciscoalcaraz.vercel.app/CV_DAM_Francisco_Javier_Alcaraz_Bolivar.pdf" target="_blank" rel="noopener"><span data-i18n="hero.cta2">Descargar CV</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg></a>
+          <a class="btn" href="CV_Francisco_Javier_Alcaraz_Bolivar.pdf" download><span data-i18n="hero.cta2">Descargar CV</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg></a>
           <a class="btn" href="#contacto"><span data-i18n="hero.cta3">Contactar</span></a>
         </div>
       </div>
@@ -813,7 +813,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     };
     requestAnimationFrame(loop);
   }
-  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { size(); sSize(); render(); drawSeismo(); }, 150); });
+  /* Medir en cuanto el canvas tenga tamaño real: al cargar en una pestaña oculta o en un visor el ancho puede ser 0. */
+  let pw = 0, ph = 0, sw0 = 0, sh0 = 0;
+  new ResizeObserver(() => {
+    const r = cv.getBoundingClientRect();
+    if (r.width === pw && r.height === ph) return;
+    pw = r.width; ph = r.height; size(); render();
+  }).observe(cv);
+  new ResizeObserver(() => {
+    const r = sc.getBoundingClientRect();
+    if (r.width === sw0 && r.height === sh0) return;
+    sw0 = r.width; sh0 = r.height; sSize(); drawSeismo();
+  }).observe(sc);
 })();
 </script>
 
