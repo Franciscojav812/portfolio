@@ -103,6 +103,11 @@ section.block{padding-block:clamp(64px,9vw,120px) 0}
 .name .second{background:linear-gradient(180deg,#B9CCF2 0%,#7C9BDA 46%,#4E6DAE 54%,#9DB5E6 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .slab .metal::selection,.name span::selection{-webkit-text-fill-color:var(--paper)}
 
+.vids{flex-direction:row;align-items:flex-start;gap:14px}
+.vids figure{margin:0;flex:1 1 0;min-width:0;display:grid;gap:8px}
+.vids video{width:100%;height:auto;display:block;border-radius:4px;background:#000;border:1px solid var(--line)}
+@media (max-width:520px){.vids{flex-direction:column}}
+
 /* Cards (shared by experience and projects) */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,2.8vw,32px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);min-width:0;transition:border-color .2s}
 .card:hover{border-color:color-mix(in srgb,var(--ink) 30%,var(--line))}
@@ -364,6 +369,29 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         </div>
       </article>
 
+      <!-- Playbook Pro en vídeo -->
+      <article class="card">
+        <div class="body">
+          <div class="meta"><span class="label" data-i18n="med.tag">Demo</span><span class="label">56 s</span></div>
+          <h3 data-i18n="med.title">Playbook Pro en acción</h3>
+          <p data-i18n="med.desc">Dos formatos del mismo recorrido: la app en el móvil, desde la pantalla de inicio hasta los avisos de cambio durante el partido.</p>
+        </div>
+        <div class="viz vids">
+          <figure>
+            <video controls playsinline preload="metadata" poster="media/pb-9x16.jpg">
+              <source src="media/pb-9x16.mp4" type="video/mp4">
+            </video>
+            <figcaption class="note" data-i18n="med.v1">Formato vertical 9:16</figcaption>
+          </figure>
+          <figure>
+            <video controls playsinline preload="metadata" poster="media/pb-4x5.jpg">
+              <source src="media/pb-4x5.mp4" type="video/mp4">
+            </video>
+            <figcaption class="note" data-i18n="med.v2">Formato feed 4:5</figcaption>
+          </figure>
+        </div>
+      </article>
+
 <!-- Sonae -->
       <article class="card">
         <div class="body">
@@ -496,6 +524,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   /* ---------- i18n ---------- */
   const T = {
     en:{
+      "med.tag":"Demo","med.title":"Playbook Pro in action","med.desc":"Two formats of the same walkthrough: the app on a phone, from the home screen to substitution alerts during a match.","med.v1":"Vertical 9:16 format","med.v2":"Feed 4:5 format",
       "nav.exp":"Experience","nav.projects":"Projects","nav.profile":"Profile","nav.contact":"Contact",
       "hero.eyebrow":"Full stack & data developer · Madrid",
       "hero.lede":"I build software that works with data: incidents in a production database, live earthquake feeds, football matches minute by minute. I hold a Higher Diploma in Multiplatform App Development, I'm studying Computer Engineering, and I'm <b>native bilingual in Spanish and Japanese</b>. My focus is <b>data science applied to football, cloud and full stack development</b>.",
@@ -561,6 +590,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       "_copied":"Email copied","_copyfail":"Select the address to copy it"
     },
     ja:{
+      "med.tag":"デモ","med.title":"Playbook Pro の動画","med.desc":"同じ操作を2つの形式で収録しました。ホーム画面から、試合中の交代アラートまでの流れです。","med.v1":"縦型 9:16","med.v2":"フィード 4:5",
       "nav.exp":"職歴","nav.projects":"プロジェクト","nav.profile":"プロフィール","nav.contact":"連絡先",
       "hero.eyebrow":"フルスタック・データ開発者 · マドリード",
       "hero.lede":"本番データベースの障害、リアルタイムの地震情報、試合ごとの出場時間。データと向き合うソフトウェアを作っています。DAM（マルチプラットフォーム・アプリ開発）上級技術者課程を修了し、現在は情報工学の学士課程に在籍。<b>スペイン語・日本語のネイティブバイリンガル</b>です。注力分野は<b>サッカーを中心としたデータサイエンス、クラウド、フルスタック開発</b>。",
@@ -708,7 +738,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     if (!W) return;
     let max = 0.0001; for (let i = 0; i < heat.length; i++) if (heat[i] > max) max = heat[i];
     for (let i = 0; i < heat.length; i++){
-      const c = LUT[Math.min(255, Math.round(Math.pow(heat[i]/max, .55)*255))];
+      const k = Math.pow(Math.max(0, heat[i])/max, .55);
+      const c = LUT[Number.isFinite(k) ? Math.min(255, Math.round(k*255)) : 0];
       oimg.data[i*4] = c[0]; oimg.data[i*4+1] = c[1]; oimg.data[i*4+2] = c[2]; oimg.data[i*4+3] = 255;
     }
     octx.putImageData(oimg, 0, 0);
@@ -805,7 +836,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
     sT = trace.length;
     const loop = ts => {
-      const dtReal = Math.min(0.05, (ts - last)/1000); last = ts;
+      const dtReal = Math.max(0, Math.min(0.05, (ts - last)/1000)); last = ts;
       if (visible){ const steps = 6; for (let i = 0; i < steps; i++) sim(dtReal*14/steps); render(); }
       sT += 4; if (sT > trace.length + 160){ sT = 0; buildTrace(); $('mag').textContent = 'M ' + (4 + Math.random()*2.6).toFixed(1); }
       drawSeismo();
