@@ -325,15 +325,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <!-- Fútbol: Playbook Pro -->
       <article class="card feature">
         <div class="body">
-          <div class="meta"><span class="tag" data-i18n="p0.tag">Proyecto destacado</span><span class="status"><i></i><span data-i18n="p0.status">En producción</span></span></div>
+          <div class="meta"><span class="tag" data-i18n="p0.tag">Proyecto destacado</span><span class="status"><i></i><span data-i18n="p0.status">Demo en evolución</span></span></div>
           <h3>Playbook Pro</h3>
           <div class="sub"><strong data-i18n="p0.sub">La app del cuerpo técnico de fútbol base</strong></div>
-          <p data-i18n="p0.desc">PWA para el móvil del segundo entrenador: cuenta los minutos de cada jugador durante el partido, prepara la semana del equipo y reúne una biblioteca de ejercicios. Sirve para fútbol 7 y fútbol 11, con varios equipos y clubes en el mismo móvil. Funciona sin conexión, sin cuentas y sin servidor.</p>
+          <p data-i18n="p0.desc">PWA para el móvil del segundo entrenador: cuenta los minutos de cada jugador durante el partido, prepara la semana del equipo y genera datos listos para Excel y Power BI. Sirve para fútbol 7 y fútbol 11, con varios equipos y clubes en el mismo móvil. Funciona sin conexión, sin cuentas y sin servidor.</p>
           <div class="kpis">
-            <div><b>27</b><span class="label" data-i18n="p0.k1">archivos de pruebas</span></div>
-            <div><b>&lt;80 KB</b><span class="label" data-i18n="p0.k2">página de partido</span></div>
-            <div><b>200+</b><span class="label" data-i18n="p0.k3">ejercicios</span></div>
-            <div><b>80</b><span class="label" data-i18n="p0.k4">lecciones</span></div>
+            <div><b>40+</b><span class="label" data-i18n="p0.k1">archivos de pruebas</span></div>
+            <div><b>~80 KB</b><span class="label" data-i18n="p0.k2">página de partido</span></div>
+            <div><b>43</b><span class="label" data-i18n="p0.k3">partidos reales</span></div>
+            <div><b>7</b><span class="label" data-i18n="p0.k4">hojas de exportación</span></div>
           </div>
         </div>
         <div class="viz">
@@ -358,14 +358,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <div class="mods full">
           <div><span class="label" data-i18n="p0.m1t">App 1 · Minutos</span><p data-i18n="p0.m1">El día de partido, con una mano: cambios tocando al jugador y al suplente, minutos en directo, sugerencia de cambio, plan de rotaciones equitativo, avisos y deshacer. Registro avanzado opcional de tiros, zonas, pérdidas y tarjetas.</p></div>
           <div><span class="label" data-i18n="p0.m2t">App 2 · Equipo</span><p data-i18n="p0.m2">La semana: convocatoria justa con el motivo de cada decisión e imagen para WhatsApp, Game Plan, asistencia, sesiones, informe post-partido y análisis de temporada.</p></div>
-          <div><span class="label" data-i18n="p0.m3t">App 3 · Academia</span><p data-i18n="p0.m3">80 lecciones y más de 200 ejercicios con ficha profesional y filtros. Los dibujos se animan paso a paso con un motor SVG propio.</p></div>
+          <div><span class="label" data-i18n="p0.m3t">Próximamente · Academia</span><p data-i18n="p0.m3">Biblioteca de ejercicios y lecciones con dibujos animados. Fuera de la versión principal mientras se rehace; sigue en desarrollo en una rama aparte.</p></div>
         </div>
 
         <div class="eng full">
           <span class="label" data-i18n="p0.eng">Ingeniería</span>
           <ul>
-            <li data-i18n="p0.b1">JavaScript sin framework, Tailwind v4 compilado y service worker. La página del partido pesa menos de 80 KB comprimidos y no carga la biblioteca.</li>
-            <li data-i18n="p0.b2">27 archivos de pruebas automáticas con Playwright y Chromium sobre datos sintéticos, incluido rendimiento con la CPU 4 veces más lenta.</li>
+            <li data-i18n="p0.b1">JavaScript sin framework, Tailwind v4 compilado y service worker. La página del partido ronda los 80 KB comprimidos.</li>
+            <li data-i18n="p0.b2">Más de 40 archivos de pruebas automáticas con Playwright y Chromium sobre datos sintéticos, incluido rendimiento con la CPU 4 veces más lenta.</li>
             <li data-i18n="p0.b3">Exportación a Excel con un contrato fijo de 7 hojas y scripts en Python que la vuelcan en el Excel maestro de cada equipo para analizarla en Power BI.</li>
             <li data-i18n="p0.b4">Privacidad por diseño: son datos de menores, así que nunca salen del móvil y los jugadores se exportan con un código anónimo. Escapado de todo texto, protección contra inyección de fórmulas en CSV y cabeceras CSP.</li>
           </ul>
@@ -381,14 +381,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
           <h3 data-i18n="med.title">Playbook Pro, por dentro</h3>
           <p data-i18n="med.desc">Del cuaderno de papel a Excel y Power BI. Estas son las decisiones técnicas detrás de la app.</p>
           <ol class="demo-steps">
-            <li><span data-i18n="med.f1"><strong>Tres apps, un solo dato.</strong> Minutos, Equipo y Academia comparten los mismos datos en el móvil, sin cuentas ni servidor.</span></li>
+            <li><span data-i18n="med.f1"><strong>Dos apps, un solo dato.</strong> Minutos y Equipo comparten los mismos datos en el móvil, sin cuentas ni servidor. Academia vuelve más adelante.</span></li>
             <li><span data-i18n="med.f2"><strong>Modo esencial en directo.</strong> Durante el partido solo aparece lo que se toca con el balón en juego. El registro avanzado es opcional.</span></li>
             <li><span data-i18n="med.f3"><strong>Reparto justo por diseño.</strong> Mínimos de minutos, pilares y una recomendación de reparto según lo jugado en la temporada.</span></li>
-            <li><span data-i18n="med.f4"><strong>Rendimiento y calidad medidos.</strong> Página de partido de menos de 80 KB comprimidos y 27 archivos de pruebas automáticas con Playwright.</span></li>
+            <li><span data-i18n="med.f4"><strong>Rendimiento y calidad medidos.</strong> Página de partido de unos 80 KB comprimidos y más de 40 archivos de pruebas automáticas con Playwright.</span></li>
             <li><span data-i18n="med.f5"><strong>Datos de menores protegidos.</strong> Nada sale del móvil salvo la copia que comparte el usuario. Sin dorsales en los Excel, con escapado de texto y CSP.</span></li>
             <li><span data-i18n="med.f6"><strong>Del móvil a Power BI.</strong> Un contrato de exportación de 7 hojas fijas que un script de Python integra en el Excel maestro de cada equipo.</span></li>
           </ol>
-          <p class="note" data-i18n="med.next">Siguientes pasos: sesiones tipo y almacenamiento en IndexedDB con migraciones.</p>
+          <p class="note" data-i18n="med.next">Siguientes pasos: almacenamiento en IndexedDB con migraciones, plan de cambios, informe por jugador, sesiones tipo y el regreso de Academia. Demo en evolución, con actualizaciones frecuentes.</p>
         </div>
         <figure class="phone">
           <div class="frame">
@@ -531,7 +531,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   /* ---------- i18n ---------- */
   const T = {
     en:{
-      "med.tag":"70-second ad","med.title":"Playbook Pro, under the hood","med.desc":"From paper notebook to Excel and Power BI. These are the technical decisions behind the app.","med.f1":"<strong>Three apps, one set of data.</strong> Minutes, Team and Academy share the same data on the phone, with no accounts and no server.","med.f2":"<strong>Essential mode during matches.</strong> Only what you touch while the ball is in play is shown. Advanced logging is optional.","med.f3":"<strong>Fair rotation by design.</strong> Minimum minutes, core players, and a rotation suggestion based on season minutes.","med.f4":"<strong>Measured performance and quality.</strong> Match page under 80 KB compressed, plus 27 automated test files with Playwright.","med.f5":"<strong>Minors' data protected.</strong> Nothing leaves the phone except the backup the user shares. No squad numbers in the Excel files, with text escaping and CSP.","med.f6":"<strong>From phone to Power BI.</strong> A fixed 7-sheet export contract that a Python script merges into each team's master workbook.","med.next":"Next steps: session templates and IndexedDB storage with migrations.",
+      "med.tag":"70-second ad","med.title":"Playbook Pro, under the hood","med.desc":"From paper notebook to Excel and Power BI. These are the technical decisions behind the app.","med.f1":"<strong>Two apps, one set of data.</strong> Minutes and Team share the same data on the phone, with no accounts and no server. Academy returns later.","med.f2":"<strong>Essential mode during matches.</strong> Only what you touch while the ball is in play is shown. Advanced logging is optional.","med.f3":"<strong>Fair rotation by design.</strong> Minimum minutes, core players, and a rotation suggestion based on season minutes.","med.f4":"<strong>Measured performance and quality.</strong> Match page around 80 KB compressed, plus over 40 automated test files with Playwright.","med.f5":"<strong>Minors' data protected.</strong> Nothing leaves the phone except the backup the user shares. No squad numbers in the Excel files, with text escaping and CSP.","med.f6":"<strong>From phone to Power BI.</strong> A fixed 7-sheet export contract that a Python script merges into each team's master workbook.","med.next":"Next: IndexedDB storage with migrations, change plan, per-player report, session templates and the return of Academy. An evolving demo with frequent updates.",
       "med.tag":"Demo","med.title":"Playbook Pro in action","med.desc":"How the app looks on a phone, from the home screen to substitution alerts during a match.","nav.exp":"Experience","nav.projects":"Projects","nav.profile":"Profile","nav.contact":"Contact",
       "hero.eyebrow":"Full stack & data developer · Madrid",
       "hero.lede":"I build software that works with data: incidents in a production database, live earthquake feeds, football matches minute by minute. I hold a Higher Diploma in Multiplatform App Development, I'm studying Computer Engineering, and I'm <b>native bilingual in Spanish and Japanese</b>. My focus is <b>data science applied to football, cloud and full stack development</b>.",
@@ -554,16 +554,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       "exp.c1":"Relational model","exp.c2":"Data migration","exp.c3":"Technical documentation",
       "exp.viz":"Illustrative example","exp.vizcap":"The kind of query I used to find inconsistencies. Not company code.",
       "proj.title":"Projects","proj.intro":"Three self-initiated projects, published and in use. Each one started from a real problem.",
-      "p0.tag":"Featured project","p0.status":"In production","p0.sub":"The app for youth football coaching staff",
-      "p0.desc":"A PWA for the assistant coach's phone: it counts every player's minutes during the match, prepares the team's week and gathers a library of drills. Works for 7-a-side and 11-a-side, with several teams and clubs on one phone. Runs offline, with no accounts and no server.",
-      "p0.k1":"test files","p0.k2":"match page","p0.k3":"drills","p0.k4":"lessons",
+      "p0.tag":"Featured project","p0.status":"Evolving demo","p0.sub":"The app for youth football coaching staff",
+      "p0.desc":"A PWA for the assistant coach's phone: it counts every player's minutes during the match, prepares the team's week and produces data ready for Excel and Power BI. Works for 7-a-side and 11-a-side, with several teams and clubs on one phone. Runs offline, with no accounts and no server.",
+      "p0.k1":"test files","p0.k2":"match page","p0.k3":"real matches","p0.k4":"export sheets",
       "p0.viz":"Formation · 11-a-side","p0.bars":"Playing-time traffic light · sample","p0.lo":"Plays too little","p0.ok":"Balanced","p0.hi":"Plays a lot",
       "p0.m1t":"App 1 · Minutes","p0.m1":"Match day, one-handed: substitutions by tapping the player and the sub, live minutes, substitution suggestions, a fair rotation plan, alerts and undo. Optional advanced logging of shots, zones, turnovers and cards.",
       "p0.m2t":"App 2 · Team","p0.m2":"The week: a fair squad call-up with the reason behind each decision and an image for WhatsApp, Game Plan, attendance, sessions, post-match report and season analysis.",
-      "p0.m3t":"App 3 · Academy","p0.m3":"80 lessons and over 200 drills with a professional spec sheet and filters. Diagrams animate step by step with a custom SVG engine.",
+      "p0.m3t":"Coming soon · Academy","p0.m3":"Drill and lesson library with animated diagrams. Out of the main version while it is rebuilt; still in development on a separate branch.",
       "p0.eng":"Engineering",
-      "p0.b1":"Framework-free JavaScript, compiled Tailwind v4 and a service worker. The match page is under 80 KB compressed and never loads the drill library.",
-      "p0.b2":"27 automated test files with Playwright and Chromium on synthetic data, including performance under a 4× CPU slowdown.",
+      "p0.b1":"Framework-free JavaScript, compiled Tailwind v4 and a service worker. The match page is around 80 KB compressed.",
+      "p0.b2":"Over 40 automated test files with Playwright and Chromium on synthetic data, including performance under a 4× CPU slowdown.",
       "p0.b3":"Excel export with a fixed 7-sheet contract, plus Python scripts that merge it into each team's master workbook for analysis in Power BI.",
       "p0.b4":"Privacy by design: it holds minors' data, so nothing leaves the phone and players are exported under an anonymous code. All text is escaped, CSV exports are protected against formula injection, and CSP headers are set.",
       "p0.private":"The code is private because it handles minors' data. Happy to walk through it in an interview.",
@@ -597,7 +597,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       "_copied":"Email copied","_copyfail":"Select the address to copy it"
     },
     ja:{
-      "med.tag":"70秒の広告","med.title":"Playbook Pro の技術","med.desc":"紙のノートからExcelとPower BIまで。アプリの背後にある技術的な判断です。","med.f1":"<strong>3つのアプリ、ひとつのデータ。</strong> 出場時間・チーム・アカデミーは同じデータをスマホ内で共有。アカウントもサーバーも不要です。","med.f2":"<strong>試合中のエッセンシャルモード。</strong> ボールがインプレー中に触る操作だけを表示。詳細記録は任意です。","med.f3":"<strong>設計段階から公平なローテーション。</strong> 最低出場時間、主力、シーズンの出場時間に基づく交代の提案。","med.f4":"<strong>性能と品質を計測。</strong> 試合ページは圧縮後80 KB未満。Playwrightによる自動テスト27ファイル。","med.f5":"<strong>未成年のデータを保護。</strong> ユーザーが共有したバックアップ以外は端末の外に出ません。Excelに背番号は含めず、テキストのエスケープとCSPを実装。","med.f6":"<strong>スマホからPower BIへ。</strong> 7シート固定の出力契約。Pythonスクリプトがチームごとのマスター Excel に統合します。","med.next":"次のステップ：練習メニューのテンプレート、移行機能つきのIndexedDB保存。",
+      "med.tag":"70秒の広告","med.title":"Playbook Pro の技術","med.desc":"紙のノートからExcelとPower BIまで。アプリの背後にある技術的な判断です。","med.f1":"<strong>2つのアプリ、ひとつのデータ。</strong> 出場時間とチームは同じデータをスマホ内で共有。アカウントもサーバーも不要。アカデミーは後日復帰します。","med.f2":"<strong>試合中のエッセンシャルモード。</strong> ボールがインプレー中に触る操作だけを表示。詳細記録は任意です。","med.f3":"<strong>設計段階から公平なローテーション。</strong> 最低出場時間、主力、シーズンの出場時間に基づく交代の提案。","med.f4":"<strong>性能と品質を計測。</strong> 試合ページは圧縮後およそ80 KB。Playwrightによる40以上の自動テストファイル。","med.f5":"<strong>未成年のデータを保護。</strong> ユーザーが共有したバックアップ以外は端末の外に出ません。Excelに背番号は含めず、テキストのエスケープとCSPを実装。","med.f6":"<strong>スマホからPower BIへ。</strong> 7シート固定の出力契約。Pythonスクリプトがチームごとのマスター Excel に統合します。","med.next":"次の予定：マイグレーション付きIndexedDB、変更プラン、選手別レポート、セッションテンプレート、アカデミーの復帰。頻繁に更新される進化中のデモです。",
       "med.tag":"デモ","med.title":"Playbook Pro の動画","med.desc":"ホーム画面から試合中の交代アラートまで、スマホでの実際の画面です。","nav.exp":"職歴","nav.projects":"プロジェクト","nav.profile":"プロフィール","nav.contact":"連絡先",
       "hero.eyebrow":"フルスタック・データ開発者 · マドリード",
       "hero.lede":"本番データベースの障害、リアルタイムの地震情報、試合ごとの出場時間。データと向き合うソフトウェアを作っています。DAM（マルチプラットフォーム・アプリ開発）上級技術者課程を修了し、現在は情報工学の学士課程に在籍。<b>スペイン語・日本語のネイティブバイリンガル</b>です。注力分野は<b>サッカーを中心としたデータサイエンス、クラウド、フルスタック開発</b>。",
@@ -620,16 +620,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       "exp.c1":"リレーショナルモデル","exp.c2":"データ移行","exp.c3":"技術文書",
       "exp.viz":"クエリの例（イメージ）","exp.vizcap":"不整合の検出に使っていた種類のクエリです。会社のコードではありません。",
       "proj.title":"プロジェクト","proj.intro":"公開・運用中の自主開発プロジェクト3つ。どれも実際の課題から生まれました。",
-      "p0.tag":"注目プロジェクト","p0.status":"本番運用中","p0.sub":"少年サッカーのコーチングスタッフ向けアプリ",
-      "p0.desc":"アシスタントコーチのスマホ用PWA。試合中に各選手の出場時間を計測し、1週間のチーム準備を行い、練習メニューのライブラリをまとめています。7人制・11人制に対応し、1台で複数のチーム・クラブを管理できます。オフラインで動作し、アカウントもサーバーも不要です。",
-      "p0.k1":"テストファイル","p0.k2":"試合ページ","p0.k3":"練習メニュー","p0.k4":"レッスン",
+      "p0.tag":"注目プロジェクト","p0.status":"進化中のデモ","p0.sub":"少年サッカーのコーチングスタッフ向けアプリ",
+      "p0.desc":"アシスタントコーチのスマホ用PWA。試合中に各選手の出場時間を計測し、1週間のチーム準備を行い、ExcelとPower BI向けのデータを生成します。7人制・11人制に対応し、1台で複数のチーム・クラブを管理できます。オフラインで動作し、アカウントもサーバーも不要です。",
+      "p0.k1":"テストファイル","p0.k2":"試合ページ","p0.k3":"実際の試合","p0.k4":"出力シート",
       "p0.viz":"フォーメーション · 11人制","p0.bars":"出場時間の配分 · サンプル","p0.lo":"少ない","p0.ok":"適正","p0.hi":"多い",
       "p0.m1t":"アプリ1 · 出場時間","p0.m1":"片手で使える試合当日の画面。選手と控えをタップして交代、リアルタイムの出場時間、交代の提案、公平なローテーション計画、アラート、取り消し。シュート、ゾーン、ボールロスト、カードの詳細記録も任意で可能。",
       "p0.m2t":"アプリ2 · チーム","p0.m2":"1週間の準備。判断理由つきの公平な招集案とWhatsApp用画像、ゲームプラン、出欠、練習セッション、試合後レポート、シーズン分析。",
-      "p0.m3t":"アプリ3 · アカデミー","p0.m3":"80のレッスンと200以上の練習メニュー（詳細シート・フィルター付き）。自作のSVG描画エンジンで図が一歩ずつアニメーションします。",
+      "p0.m3t":"近日公開 · アカデミー","p0.m3":"アニメーション付きの練習メニューとレッスンのライブラリ。作り直しのためメイン版から外れており、別ブランチで開発を続けています。",
       "p0.eng":"エンジニアリング",
-      "p0.b1":"フレームワークなしのJavaScript、コンパイル済みTailwind v4、Service Worker。試合ページは圧縮後80 KB未満で、ライブラリを読み込みません。",
-      "p0.b2":"PlaywrightとChromiumによる27ファイルの自動テストを合成データで実行。CPUを4倍遅くした状態での性能テストも含みます。",
+      "p0.b1":"フレームワークなしのJavaScript、コンパイル済みTailwind v4、Service Worker。試合ページは圧縮後およそ80 KBです。",
+      "p0.b2":"PlaywrightとChromiumによる40以上のファイルの自動テストを合成データで実行。CPUを4倍遅くした状態での性能テストも含みます。",
       "p0.b3":"7シート固定の契約に基づくExcel出力と、各チームのマスターExcelへ反映するPythonスクリプト。Power BIで分析できます。",
       "p0.b4":"プライバシー・バイ・デザイン。未成年のデータなので端末の外に出ず、選手は匿名コードで出力。全テキストのエスケープ、CSVの数式インジェクション対策、CSPヘッダーを実装。",
       "p0.private":"未成年のデータを扱うため、コードは非公開です。面接でご説明できます。",
