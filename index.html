@@ -106,6 +106,7 @@ section.block{padding-block:clamp(64px,9vw,120px) 0}
 .card.demo{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:center}
 .demo-steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:st}
 .card .demo-steps li{counter-increment:st;display:flex;gap:14px;align-items:baseline;padding-left:0;font-size:.95rem;color:var(--ink)}
+.card .demo-steps li > span{flex:1;min-width:0}
 .card .demo-steps li::before{content:counter(st,decimal-leading-zero);position:static;width:auto;height:auto;background:none;font:500 .72rem var(--f-mono);color:var(--shu-text);flex:none}
 .phone{margin:0;justify-self:center;width:100%;max-width:300px}
 .phone .frame{padding:10px;border-radius:34px;background:#05080D;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
@@ -376,19 +377,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <!-- Playbook Pro en vídeo -->
       <article class="card demo">
         <div class="body">
-          <div class="meta"><span class="label" data-i18n="med.tag">Demo</span><span class="label">56 s · 9:16</span></div>
-          <h3 data-i18n="med.title">Playbook Pro en acción</h3>
-          <p data-i18n="med.desc">Así se ve la app en el móvil, desde la pantalla de inicio hasta los avisos de cambio durante el partido.</p>
-          <ul class="demo-steps">
-            <li data-i18n="med.s1">Preparar el partido: convocados y titulares.</li>
-            <li data-i18n="med.s2">En directo: cambios en dos toques y minutos al instante.</li>
-            <li data-i18n="med.s3">Avisos inteligentes: la app dice a quién cambiar.</li>
-          </ul>
+          <div class="meta"><span class="label" data-i18n="med.tag">Anuncio · 60 s</span><span class="label">Playbook Pro</span></div>
+          <h3 data-i18n="med.title">Playbook Pro, por dentro</h3>
+          <p data-i18n="med.desc">Del cuaderno de papel a Excel y Power BI. Estas son las decisiones técnicas detrás de la app.</p>
+          <ol class="demo-steps">
+            <li><span data-i18n="med.f1"><strong>Tres apps, un solo dato.</strong> Minutos, Equipo y Academia comparten los mismos datos en el móvil, sin cuentas ni servidor.</span></li>
+            <li><span data-i18n="med.f2"><strong>Modo esencial en directo.</strong> Durante el partido solo aparece lo que se toca con el balón en juego. El registro avanzado es opcional.</span></li>
+            <li><span data-i18n="med.f3"><strong>Reparto justo por diseño.</strong> Mínimos de minutos, pilares y una recomendación de reparto según lo jugado en la temporada.</span></li>
+            <li><span data-i18n="med.f4"><strong>Rendimiento y calidad medidos.</strong> Página de partido de menos de 80 KB comprimidos y 27 archivos de pruebas automáticas con Playwright.</span></li>
+            <li><span data-i18n="med.f5"><strong>Datos de menores protegidos.</strong> Nada sale del móvil salvo la copia que comparte el usuario. Sin dorsales en los Excel, con escapado de texto y CSP.</span></li>
+            <li><span data-i18n="med.f6"><strong>Del móvil a Power BI.</strong> Un contrato de exportación de 7 hojas fijas que un script de Python integra en el Excel maestro de cada equipo.</span></li>
+          </ol>
+          <p class="note" data-i18n="med.next">Siguientes pasos: sesiones tipo, almacenamiento en IndexedDB con migraciones y fútbol 11.</p>
         </div>
         <figure class="phone">
           <div class="frame">
-            <video controls playsinline preload="metadata" poster="media/pb-9x16.jpg" aria-label="Vídeo de demostración de Playbook Pro">
-              <source src="media/pb-9x16.mp4" type="video/mp4">
+            <video controls playsinline preload="metadata" poster="media/playbook-pro-anuncio.jpg" aria-label="Anuncio de 60 segundos de Playbook Pro, con voz">
+              <source src="media/playbook-pro-anuncio.mp4" type="video/mp4">
             </video>
           </div>
         </figure>
@@ -526,8 +531,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   /* ---------- i18n ---------- */
   const T = {
     en:{
-      "med.tag":"Demo","med.title":"Playbook Pro in action","med.desc":"How the app looks on a phone, from the home screen to substitution alerts during a match.","med.s1":"Preparar el partido: convocados y titulares.","med.s2":"En directo: cambios en dos toques y minutos al instante.","med.s3":"Avisos inteligentes: la app dice a quién cambiar.",
-      "nav.exp":"Experience","nav.projects":"Projects","nav.profile":"Profile","nav.contact":"Contact",
+      "med.tag":"60-second ad","med.title":"Playbook Pro, under the hood","med.desc":"From paper notebook to Excel and Power BI. These are the technical decisions behind the app.","med.f1":"<strong>Three apps, one set of data.</strong> Minutes, Team and Academy share the same data on the phone, with no accounts and no server.","med.f2":"<strong>Essential mode during matches.</strong> Only what you touch while the ball is in play is shown. Advanced logging is optional.","med.f3":"<strong>Fair rotation by design.</strong> Minimum minutes, core players, and a rotation suggestion based on season minutes.","med.f4":"<strong>Measured performance and quality.</strong> Match page under 80 KB compressed, plus 27 automated test files with Playwright.","med.f5":"<strong>Minors' data protected.</strong> Nothing leaves the phone except the backup the user shares. No squad numbers in the Excel files, with text escaping and CSP.","med.f6":"<strong>From phone to Power BI.</strong> A fixed 7-sheet export contract that a Python script merges into each team's master workbook.","med.next":"Next steps: session templates, IndexedDB storage with migrations, and 11-a-side football.",
+      "med.tag":"Demo","med.title":"Playbook Pro in action","med.desc":"How the app looks on a phone, from the home screen to substitution alerts during a match.","nav.exp":"Experience","nav.projects":"Projects","nav.profile":"Profile","nav.contact":"Contact",
       "hero.eyebrow":"Full stack & data developer · Madrid",
       "hero.lede":"I build software that works with data: incidents in a production database, live earthquake feeds, football matches minute by minute. I hold a Higher Diploma in Multiplatform App Development, I'm studying Computer Engineering, and I'm <b>native bilingual in Spanish and Japanese</b>. My focus is <b>data science applied to football, cloud and full stack development</b>.",
       "hero.cta1":"See projects","hero.cta2":"Download CV","hero.cta3":"Get in touch",
@@ -592,8 +597,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       "_copied":"Email copied","_copyfail":"Select the address to copy it"
     },
     ja:{
-      "med.tag":"デモ","med.title":"Playbook Pro の動画","med.desc":"ホーム画面から試合中の交代アラートまで、スマホでの実際の画面です。","med.s1":"Preparar el partido: convocados y titulares.","med.s2":"En directo: cambios en dos toques y minutos al instante.","med.s3":"Avisos inteligentes: la app dice a quién cambiar.",
-      "nav.exp":"職歴","nav.projects":"プロジェクト","nav.profile":"プロフィール","nav.contact":"連絡先",
+      "med.tag":"60秒の広告","med.title":"Playbook Pro の技術","med.desc":"紙のノートからExcelとPower BIまで。アプリの背後にある技術的な判断です。","med.f1":"<strong>3つのアプリ、ひとつのデータ。</strong> 出場時間・チーム・アカデミーは同じデータをスマホ内で共有。アカウントもサーバーも不要です。","med.f2":"<strong>試合中のエッセンシャルモード。</strong> ボールがインプレー中に触る操作だけを表示。詳細記録は任意です。","med.f3":"<strong>設計段階から公平なローテーション。</strong> 最低出場時間、主力、シーズンの出場時間に基づく交代の提案。","med.f4":"<strong>性能と品質を計測。</strong> 試合ページは圧縮後80 KB未満。Playwrightによる自動テスト27ファイル。","med.f5":"<strong>未成年のデータを保護。</strong> ユーザーが共有したバックアップ以外は端末の外に出ません。Excelに背番号は含めず、テキストのエスケープとCSPを実装。","med.f6":"<strong>スマホからPower BIへ。</strong> 7シート固定の出力契約。Pythonスクリプトがチームごとのマスター Excel に統合します。","med.next":"次のステップ：練習メニューのテンプレート、移行機能つきのIndexedDB保存、11人制サッカー。",
+      "med.tag":"デモ","med.title":"Playbook Pro の動画","med.desc":"ホーム画面から試合中の交代アラートまで、スマホでの実際の画面です。","nav.exp":"職歴","nav.projects":"プロジェクト","nav.profile":"プロフィール","nav.contact":"連絡先",
       "hero.eyebrow":"フルスタック・データ開発者 · マドリード",
       "hero.lede":"本番データベースの障害、リアルタイムの地震情報、試合ごとの出場時間。データと向き合うソフトウェアを作っています。DAM（マルチプラットフォーム・アプリ開発）上級技術者課程を修了し、現在は情報工学の学士課程に在籍。<b>スペイン語・日本語のネイティブバイリンガル</b>です。注力分野は<b>サッカーを中心としたデータサイエンス、クラウド、フルスタック開発</b>。",
       "hero.cta1":"プロジェクトを見る","hero.cta2":"履歴書をダウンロード","hero.cta3":"連絡する",
